@@ -3,19 +3,19 @@
 function output_variable = connect_four(input_variable)
 
 %Use a matrix to create the playing board
-Board = randi((10),[6,6]);
+random_matrix_to_assign = randi((10),[6,6]);
 vec_A = [0 1 1 1 1 0];
 vec_B = [0 0 0 0 0 0];
-Board((1),:) = vec_B;
-Board((2),:) = vec_A;
-Board((3),:) = vec_A;
-Board((4),:) = vec_A;
-Board((5),:) = vec_A;
-Board((6),:) = vec_A;
-Board((7),:) = vec_B;
+random_matrix_to_assign((1),:) = vec_B;
+random_matrix_to_assign((2),:) = vec_A;
+random_matrix_to_assign((3),:) = vec_A;
+random_matrix_to_assign((4),:) = vec_A;
+random_matrix_to_assign((5),:) = vec_A;
+random_matrix_to_assign((6),:) = vec_A;
+random_matrix_to_assign((7),:) = vec_B;
 
 
-the_mat2 = repmat(Board,6,7);
+the_mat2 = repmat(random_matrix_to_assign,6,7);
 inverted_the_mat2 = not(the_mat2);
 
 
@@ -65,62 +65,6 @@ else
     fprintf('Draw')
 end
 
-%% Board Logic 
-
-function result = BoardEvaluation(Board)
-result = 0;
-%Check for any winner Horizontally
-for row = Board()
-    for column = Board()
-        fourinrow = (row, column:(column + 3));
-        if fourinrow == 1
-            result = 1;
-            break;
-        elseif fourinrow == 2
-            result = 2;
-            break;
-        end
-    end
-end
-% Check winner Vertically
-if ~result 
-    for row = 
-        for column = 
-            fourinrowcol = (row:(row+3), column);
-            if fourinrowcol == 1
-                result = 1;
-                break
-            elseif fourinrowcol == 2
-                result = 2;
-                break
-            end
-        end
-    end
-end
-%Check winner horizontally
-if ~result 
-    for row = 
-        for column = 
-            diagonalwinner = [board(row, column), board(row + 1, column + 1), board(row + 2, column + 2), board(row + 3, column + 3)];
-            if diagonal winner == 1
-                result = 1;
-                break
-            elseif diagnoal winner == 2
-                result = 2;
-                break;
-            end
-        end
-    end
-end
-%Check diagnoal other direction 
-if diagonal == 1
-    result = 1;
-    break;
-elseif [board(7-row, col), board(6-row, col + 1), board(5 - row, col + 2), board(4-row, col + 3)] == 2
-          
-
-end
-end
 
 
-
+end
