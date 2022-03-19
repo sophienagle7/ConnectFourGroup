@@ -50,6 +50,20 @@ circleout = circle(3, 4, 2, 'y')
 
 
 
+end
+
+%% Assign Players
+
+player_1 == 1; %assign player 1
+player_2 == 2; %assign player 2
+result = 0; %define result variable
+if result == 1
+    fprintf("Player 1 Wins")
+elseif result == 2
+    fprintf('Player 2 Wins')
+else
+    fprintf('Draw')
+end
 
 %% Board Logic 
 
