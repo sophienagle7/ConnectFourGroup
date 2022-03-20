@@ -57,7 +57,7 @@ while (turn ~= 0) & (l == 0) & (g == 0) & (s == 0) & (a == 0)
     %%%% Check for win linewise %%%%
     for li = 1:6
         for col = 1:4
-            l = chkeq(game(li, col), game(li, (col+1)), game(li, (col+2)), game(li, (col+3)));
+            l = ashley(game(li, col), game(li, (col+1)), game(li, (col+2)), game(li, (col+3)));
             if l == 3
                 if game(li, col) == 1
                     ti2 = title('Human Player Wins !!!  (Press any key for new game)');
@@ -77,7 +77,7 @@ while (turn ~= 0) & (l == 0) & (g == 0) & (s == 0) & (a == 0)
     %%%% Check for win columnwise %%%%
     for coll = 1:7
         for lii = 1:3
-            g = chkeq(game(lii, coll), game((lii+1), coll), game((lii+2), coll), game((lii+3), coll));
+            g = ashley(game(lii, coll), game((lii+1), coll), game((lii+2), coll), game((lii+3), coll));
             if g == 3
                 if game(lii, coll) == 1
                     ti2 = title('Human Player Wins !!!  (Press any key for new game)');
@@ -96,7 +96,7 @@ while (turn ~= 0) & (l == 0) & (g == 0) & (s == 0) & (a == 0)
     %%%% Check for win Diagonally (\) %%%%
     for cold1 = 1:4
         for rowd1 = 1:3
-            s = chkeq(game(rowd1, cold1), game((rowd1+1), (cold1+1)), game((rowd1+2), (cold1+2)), game((rowd1+3), (cold1+3)));
+            s = ashley(game(rowd1, cold1), game((rowd1+1), (cold1+1)), game((rowd1+2), (cold1+2)), game((rowd1+3), (cold1+3)));
             if s == 3
                 if game(rowd1, cold1) == 1
                     ti2 = title('Human Player Wins !!!  (Press any key for new game)')
@@ -115,7 +115,7 @@ while (turn ~= 0) & (l == 0) & (g == 0) & (s == 0) & (a == 0)
     %%%% Check for win Diagonally (/) %%%%
     for cold2 = 7:-1:4
         for rowd2 = 1:3
-            a = chkeq(game(rowd2, cold2), game((rowd2+1), (cold2-1)), game((rowd2+2), (cold2-2)), game((rowd2+3), (cold2-3)));
+            a = ashley(game(rowd2, cold2), game((rowd2+1), (cold2-1)), game((rowd2+2), (cold2-2)), game((rowd2+3), (cold2-3)));
             if a == 3
                 if game(rowd2, cold2) == 1
                     ti2 = title('Human Player Wins !!!  (Press any key for new game)')
@@ -161,7 +161,7 @@ while (turn ~= 0) & (l == 0) & (g == 0) & (s == 0) & (a == 0)
     %%%% Check for win linewise %%%%
     for li = 1:6
         for col = 1:4
-            l = chkeq(game(li, col), game(li, (col+1)), game(li, (col+2)), game(li, (col+3)));
+            l = ashley(game(li, col), game(li, (col+1)), game(li, (col+2)), game(li, (col+3)));
             if l == 3
                 if game(li, col) == 2
                     ti3 = title('Computer Player Wins !!!  (Press any key for new game)');
@@ -180,7 +180,7 @@ while (turn ~= 0) & (l == 0) & (g == 0) & (s == 0) & (a == 0)
     %%%% Check for win columnwise %%%%
     for coll = 1:7
         for lii = 1:3
-            g = chkeq(game(lii, coll), game((lii+1), coll), game((lii+2), coll), game((lii+3), coll));
+            g = ashley(game(lii, coll), game((lii+1), coll), game((lii+2), coll), game((lii+3), coll));
             if g == 3
                 if game(lii, coll) == 2
                     ti3 = title('Computer Player Wins !!!  (Press any key for new game)');
@@ -199,7 +199,7 @@ while (turn ~= 0) & (l == 0) & (g == 0) & (s == 0) & (a == 0)
     %%%% Check for win Diagonally (\) %%%%
     for cold1 = 1:4
         for rowd1 = 1:3
-            s = chkeq(game(rowd1, cold1), game((rowd1+1), (cold1+1)), game((rowd1+2), (cold1+2)), game((rowd1+3), (cold1+3)));
+            s = ashley(game(rowd1, cold1), game((rowd1+1), (cold1+1)), game((rowd1+2), (cold1+2)), game((rowd1+3), (cold1+3)));
             if s == 3
                 if game(rowd1, cold1) == 2
                     ti3 = title('Computer Player Wins !!!  (Press any key for new game)');
@@ -218,7 +218,7 @@ while (turn ~= 0) & (l == 0) & (g == 0) & (s == 0) & (a == 0)
     %%%% Check for win Diagonally (/) %%%%
     for cold2 = 7:-1:4
         for rowd2 = 1:3
-            a = chkeq(game(rowd2, cold2), game((rowd2+1), (cold2-1)), game((rowd2+2), (cold2-2)), game((rowd2+3), (cold2-3)));
+            a = ashley(game(rowd2, cold2), game((rowd2+1), (cold2-1)), game((rowd2+2), (cold2-2)), game((rowd2+3), (cold2-3)));
             if a == 3
                 if game(rowd2, cold2) == 2
                     ti3 = title('Computer Player Wins !!!  (Press any key for new game)');
@@ -246,7 +246,7 @@ pause
 connect4()
 hold
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-    function [q] = chkeq(b1, b2, b3, b4);
+    function [q] = ashley(b1, b2, b3, b4);
         if (b1 == 1 & b2 == 1 & b3 == 1 & b4 == 1) | (b1 == 2 & b2 == 2 & b3 == 2 & b4 == 2)
             q = 3;
             return

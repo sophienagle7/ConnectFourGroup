@@ -1,4 +1,4 @@
-function dummy = connect4()
+function connect_four_output = connect4()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Constructing Board
@@ -25,10 +25,15 @@ plot(row_0x, row_0y, 'b', row_1x, row_1y, 'b', row_2x, row_2y, 'b', row_3x, row_
 axis off, axis square, ...
      set(gcf, 'color', [0.20000 0.7450 0.9220])
 
+%creating a gameboard using rows, columns, and plots
+%setting color of background and grid to blue
+
 instructions = title('select your chip placement by clicking the top of your chosen column');
-    set(instructions, 'color', 'r')
+    set(instructions, 'color', 'm')
     set(instructions,'FontWeight','bold')
     set(instructions,'FontSize',15)
+
+%setting title for board with instructions on how to play
 
 %% Defining Variables and Setting Game Parameters
 
@@ -39,7 +44,12 @@ diagonalCheckRL = 0; % checks for diagonal winner (right to left)
 diagonalCheckLR = 0; % checks for diagonal winner (left to right)
 row_click= 0; % row select for 'game' matrix
 turn = 42; % max turns that can be played 
-while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalCheckLR == 0) & (diagonalCheckRL == 0)
+while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonalCheckLR == 0) && (diagonalCheckRL == 0)
+
+%creating gameboard and setting variables that will be used later when
+%checking for wins and playing the game
+%using while statement to establish when the game should be played or not
+% (when there is no win and there are turns left [maximum 42 turns permitted])
 
 %% Player One Turn
 
@@ -71,9 +81,9 @@ while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalChe
 %% Look for win by rows
     for ii = 1:6
         for jj = 1:4
-            horizontalcheck = chkeq(game(ii, jj), game(ii, (jj+1)), game(ii, (jj+2)), game(ii, (jj+3)));
+            horizontalcheck = check(game(rows_ii, jj), game(rows_ii, (jj+1)), game(rows_ii, (jj+2)), game(rows_ii, (jj+3)));
             if horizontalcheck == 3
-                if game(ii, jj) == 1
+                if game(rows_ii, jj) == 1
                     player_one_winner_announcement = title('Player One Wins');
                     set(player_one_winner_announcement, 'color', 'm')
                     set(player_one_winner_announcement,'FontWeight','bold')
@@ -88,4 +98,28 @@ while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalChe
         end
  
     end
+%two nested for loops that iterate to check for a horizontal win
+%iterating through rows 1:6 and columns 1:4 looking for a match between rows where
+%there are four chips in a row from player one
+%% Look for win by columns
+    for jjj = 1:7
+        for iii = 1:3
+            verticalCheck = check(game(iii, jjj), game((iii+1), jjj), game((iii+2), jjj), game((iii+3), jjj));
+            if verticalCheck == 3
+                if game(iii, jjj) == 1
+                    ti2 = title('Player One Wins');
+                    set(ti2, 'color', 'm')
+                    set(ti2,'FontWeight','bold')
+                    set(ti2,'FontSize',19)
+                end
+                break
+            end
+        end
+        if verticalCheck == 3
+            break
+        end
+    end
+%two nested for loops that iterate to check for a vertical win
+%iterating through columns 1:7 and rows 1:3 looking for a match between columns where
+%there are four chips in a row from player one
 end
