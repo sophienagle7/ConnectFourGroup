@@ -28,6 +28,9 @@ the_mat2 = repmat(random_matrix_to_assign,6,7);
 
 imagesc(the_mat2)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -61,6 +64,7 @@ axis equal
 end
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 circleout2 = circle2(3, 4, 2, 'y')
 =======
 circleout2 = circle2(3, 4, 2, 'y') 
@@ -69,6 +73,11 @@ circleout2 = circle2(3, 4, 2, 'y')
 >>>>>>> Stashed changes
 =======
 circleout2 = circle2(3, 4, 2, 'y') 
+=======
+circleout2 = circle2(3, 4, 2, 'y') 
+
+
+>>>>>>> Stashed changes
 
 
 
