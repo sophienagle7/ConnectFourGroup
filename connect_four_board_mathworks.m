@@ -55,9 +55,9 @@ while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalChe
         row = row+1;
     end
     game(row_click, ceil(x)) = 1;
-    [dx, dy] = bdisp(r_sel, ceil(x));
-    te = text(dx+0.5, dy+0.5, 'H', ...
+    [dx, dy] = bdisp(row_click, ceil(x));
+    player_one_chip = text(dx+0.5, dy+0.5, 'O', ...
         'fontsize', 20, 'horizontalalignment', 'center');
-    set(te, 'color', 'm')
+    set(player_one_chip, 'color', 'm')
 end
 
