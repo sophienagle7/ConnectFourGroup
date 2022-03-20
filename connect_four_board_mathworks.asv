@@ -48,13 +48,16 @@ while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalChe
     row = 1;
     while row+1 <= 6
         if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2 
-%selecting the column using a click, ceil rounds the click location to the nearest whole integer
+%selecting the column using a click, ceil rounds the click location to the
+%nearest whole integer
 %if == 1 or 2, indicates that the bottom row is not occupied, so chip goes
-%in tha
+%in that slot
             row_click = row;
             break
         elseif row <= 6
             row_click = row + 1;
+%this suggests that the selected slot is occupied so the chip will have to
+%go in the slot above (row+1)
         end
         row = row+1;
     end
@@ -63,7 +66,27 @@ while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalChe
     player_one_chip = text(dx+0.5, dy+0.5, 'O', ...
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', 'm')
+%the above code creates the player one chip 
 
+% Look for win by rows
+    for ii = 1:6
+        for col = 1:4
+            l = chkeq(game(ii, col), game(ii, (col+1)), game(ii, (col+2)), game(ii, (col+3)));
+            if l == 3
+                if game(li, col) == 1
+                    ti2 = title('Human Player Wins !!!  (Press any key for new game)');
+                    set(ti2, 'color', 'm')
+                    set(ti2,'FontWeight','bold')
+                    set(ti2,'FontSize',19)
+                end
+                break
+            end
+        end
+        if l == 3
+            break
+            break
+        end
+    end
 
 end
 

@@ -1,7 +1,7 @@
 function dummy = connect4()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Constructing Board
+%% Constructing Board
 
 row_0x = [0, 7]; row_0y = [0, 0];
 row_1x = [0, 7]; row_1y = [1, 1];
@@ -30,7 +30,7 @@ instructions = title('select your chip placement by clicking the top of your cho
     set(instructions,'FontWeight','bold')
     set(instructions,'FontSize',15)
 
-% Defining Variables and Setting Game Parameters
+%% Defining Variables and Setting Game Parameters
 
 game = zeros(6, 7);
 horizontalCheck = 0; % checks for horizontal winner
@@ -41,7 +41,7 @@ row_click= 0; % row select for 'game' matrix
 turn = 42; % max turns that can be played 
 while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalCheckLR == 0) & (diagonalCheckRL == 0)
 
-% Player One Turn
+%% Player One Turn
 
     [x, y] = ginput(1);
     turn = turn-1;
@@ -62,13 +62,30 @@ while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalChe
         row = row+1;
     end
     game(row_click, ceil(x)) = 1;
-   [dx, dy] = disp(row_click, ceil(dx));
+   [dx, dy] = bdisp(row_click, ceil(dx));
     player_one_chip = text(dx+0.5, dy+0.5, 'O', ...
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', 'm')
 %the above code creates the player one chip 
 
-
-
+%% Look for win by rows
+    for ii = 1:6
+        for jj = 1:4
+            horizontalcheck = chkeq(game(ii, jj), game(ii, (jj+1)), game(ii, (jj+2)), game(ii, (jj+3)));
+            if horizontalcheck == 3
+                if game(ii, jj) == 1
+                    player_one_winner_announcement = title('Player One Wins');
+                    set(player_one_winner_announcement, 'color', 'm')
+                    set(player_one_winner_announcement,'FontWeight','bold')
+                    set(player_one_winner_announcement,'FontSize',19)
+                end
+                break
+            end
+        end
+        if horizontalcheck == 3
+            break
+            
+        end
+ 
+    end
 end
-
