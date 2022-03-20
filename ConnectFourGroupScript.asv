@@ -2,6 +2,7 @@
 %create a function (for now using generic input/output names)
 function output_variable = connect_four(input_variable)
 
+<<<<<<< Updated upstream
 %Use a matrix to create the playing board
 Board_Int = randi((10),[6,6]);
 vec_A = [0 1 1 1 1 0];
@@ -23,6 +24,31 @@ imagesc(Board)
 axis off
 
 %using a function to create playing chips
+=======
+
+%Use a matrix to create the playing board
+random_matrix_to_assign = randi((10),[6,6]);
+vec_A = [0 1 1 1 1 0];
+vec_B = [0 0 0 0 0 0];
+random_matrix_to_assign((1),:) = vec_B;
+random_matrix_to_assign((2),:) = vec_A;
+random_matrix_to_assign((3),:) = vec_A;
+random_matrix_to_assign((4),:) = vec_A;
+random_matrix_to_assign((5),:) = vec_A;
+random_matrix_to_assign((6),:) = vec_A;
+random_matrix_to_assign((7),:) = vec_B;
+
+
+the_mat2 = repmat(random_matrix_to_assign,6,7);
+%inverted_the_mat2 = not(the_mat2);
+
+
+imagesc(the_mat2)
+axis off
+
+%using a function to create playing chips
+    %RED CHIP
+>>>>>>> Stashed changes
 function circles = circle(x,y,r,c)
 hold on
 th = 0:pi/50:2*pi;
@@ -35,6 +61,10 @@ axis equal
 end
 circleout = circle(3, 4, 2, 'r') 
 
+<<<<<<< Updated upstream
+=======
+    %YELLOW CHIP
+>>>>>>> Stashed changes
 
 function circles2 = circle2(x,y,r,c)
 hold on
@@ -46,11 +76,50 @@ fill(x_circle2, y_circle2, c)
 hold off
 axis equal
 end
+<<<<<<< Updated upstream
 circleout2 = circle2(3, 4, 2, 'y')
+=======
+circleout2 = circle2(3, 4, 2, 'y') 
+
+
+% get the location of the mouse in the units of the axes
+coords = get_coords(callback.hAxes);
+% find the axis bounds
+xl = xlim;
+yl = ylim;
+% this if-statement structure:
+%   - keeps the circle inside the figure but above the game board
+%   - changes what type of pointer is displayed
+%       - invisible if moving the circle
+%       - a hand if otherwise
+set(fig,'Pointer','custom','PointerShapeCData',callback.pointer_array)
+if coords(1) < (xl(1)+callback.radius)
+    set(fig,'Pointer','hand')
+    coords(1) = xl(1) + callback.radius;
+end
+if coords(1) > (xl(2) - callback.radius);
+    set(fig,'Pointer','hand')
+    coords(1) = xl(2) - callback.radius;
+end
+if coords(2) < 7.5
+    set(fig,'Pointer','hand')
+    coords(2) = 7.5;
+end
+if coords(2) > (yl(2) - callback.radius);
+    set(fig,'Pointer','hand')
+    coords(2) = yl(2) - callback.radius;
+end
+% construct a circle around the mouse
+cx = coords(1) + callback.radius * cos(callback.t);
+cy = coords(2) + callback.radius * sin(callback.t);
+
+
+>>>>>>> Stashed changes
 
 
 
 
+<<<<<<< Updated upstream
 %% Assign Players
 
 player1 == 1; %assign player 1
@@ -157,4 +226,8 @@ end
 %           
 % 
 % end
+=======
+
+
+>>>>>>> Stashed changes
 end

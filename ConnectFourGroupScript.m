@@ -15,14 +15,23 @@ Board_Int((6),:) = vec_A;
 Board_Int((7),:) = vec_B;
 
 
+<<<<<<< Updated upstream
 the_mat2 = repmat(Board_Int,6,7);
 Board = not(the_mat2);
 
 
 imagesc(Board)
+=======
+the_mat2 = repmat(random_matrix_to_assign,6,7);
+%inverted_the_mat2 = not(the_mat2);
+
+
+imagesc(the_mat2)
+>>>>>>> Stashed changes
 axis off
 
 %using a function to create playing chips
+    %RED CHIP
 function circles = circle(x,y,r,c)
 hold on
 th = 0:pi/50:2*pi;
@@ -35,6 +44,7 @@ axis equal
 end
 circleout = circle(3, 4, 2, 'r') 
 
+    %YELLOW CHIP
 
 function circles2 = circle2(x,y,r,c)
 hold on
@@ -46,7 +56,13 @@ fill(x_circle2, y_circle2, c)
 hold off
 axis equal
 end
+<<<<<<< Updated upstream
 circleout2 = circle2(3, 4, 2, 'y')
+=======
+circleout2 = circle2(3, 4, 2, 'y') 
+
+
+>>>>>>> Stashed changes
 
 
 
