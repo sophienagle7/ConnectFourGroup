@@ -133,7 +133,7 @@ while (turn ~= 0) & (l == 0) & (g == 0) & (s == 0) & (a == 0)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%% End of Human Turn %%%%
     if (l ~= 0) | (g ~= 0) | (s ~= 0) | (a ~= 0)
-        break
+        
     end
     %%%% Computer play %%%%
     pause(.1)
