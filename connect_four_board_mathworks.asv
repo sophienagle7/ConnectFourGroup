@@ -35,6 +35,4 @@ diagonalCheckLR = 0; % checks for diagonal winner (left to right)
 r_sel = 0; % row select for 'game' matrix
 turn = 42; % max turns
 
-while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalCheckLR == 0) & (diagonalCheckRL == 0)
-    
 
