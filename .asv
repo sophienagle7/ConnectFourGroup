@@ -1,0 +1,28 @@
+function dummy = connect4()
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+row_0x = [0, 7]; row_0y = [0, 0];
+row_1x = [0, 7]; row_1y = [1, 1];
+row_2x = [0, 7]; row_2y = [2, 2];
+row_3x = [0, 7]; row_3y = [3, 3];
+row_4x = [0, 7]; row_4y = [4, 4];
+row_5x = [0, 7]; row_5y = [5, 5];
+row_6x = [0, 7]; row_6y = [6, 6];
+column_0x = [0, 0]; column_0y = [0, 6];
+column_1x = [1, 1]; column_1y = [0, 6];
+column_2x = [2, 2]; column_2y = [0, 6];
+column_3x = [3, 3]; column_3y = [0, 6];
+column_4x = [4, 4]; column_4y = [0, 6];
+column_5c = [5, 5]; vy5 = [0, 6];
+column_6 = [6, 6]; vy6 = [0, 6];
+column_7 = [7, 7]; vy7 = [0, 6];
+clf
+plot(row_1, hy0, 'b', hx1, hy1, 'b', hx2, hy2, 'b', hx3, hy3, 'b', hx4, hy4, 'b', hx5, hy5, 'b', hx6, hy6, 'b', ...
+    vx0, vy0, 'b', vx1, vy1, 'b', vx2, vy2, 'b', vx3, vy3, 'b', vx4, vy4, 'b', vx5, vy5, 'b', vx6, vy6, 'b', ...
+    vx7, vy7, 'b')
+axis off, axis square, ...
+     set(gcf, 'color', [0.20000 0.7450 0.9220])
+pause(2)
+
+game on zeros
+
+imshow([Board{1,:};Board{2,:};Board{3,:};Board{4,:};Board{5,:};Board{6,:}])

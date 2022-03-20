@@ -56,35 +56,35 @@ circleout2 = circle2(3, 4, 2, 'y')
 player1 == 1; %assign player 1
 player2 == 2; %assign player 2
 result = 0; %define result variable
-player = 0 %determines which players turn
+player = 0 % determines which players turn
 
 % Alternate player turns 
 while ~result 
     if player == 1
         player = 1;
     else player == 2
-        player = 2;
+        player = 2
     end
 end
-
-if result == 1
-    fprintf("Player 1 Wins")
-elseif result == 2
-    fprintf('Player 2 Wins')
-else
-    fprintf('Draw')
-end
-
-
-%% Board Logic
- 
-% define rows and columns
-row1 = Board(2:6, :);
-row2 = Board(9:13, :);
-row3 = Board(16:20, :);
-row4 = Board(23:27, :);
-row5 = Board(30:34, :);
-row6 = Board(37:41, :);
+% 
+% if result == 1
+%     fprintf("Player 1 Wins")
+% elseif result == 2
+%     fprintf('Player 2 Wins')
+% else
+%     fprintf('Draw')
+% end
+% 
+% 
+% %% Board Logic
+% 
+% % define rows and columns
+% row1 = board(2:6, :);
+% row2 = board(9:13, :);
+% row3 = board(16:20, :);
+% row4 = board(23:27, :);
+% row5 = board(30:34, :);
+% row6 = board(37:41, :);
 % 
 % %these are the rows that contain the squares ie col1 is the first section
 % %of columns containing 0s that would have chips
