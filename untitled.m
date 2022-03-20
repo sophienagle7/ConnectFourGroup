@@ -1,1 +1,0 @@
-board = zeros(6, 7)
