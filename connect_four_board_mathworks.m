@@ -24,9 +24,6 @@ axis off, axis square, ...
 
 %game on zeros
 
-<<<<<<< HEAD
-%imshow([Board{1,:};Board{2,:};Board{3,:};Board{4,:};Board{5,:};Board{6,:}])
-=======
 imshow([Board{1,:};Board{2,:};Board{3,:};Board{4,:};Board{5,:};Board{6,:}])
 
 game = zeros(6, 7);
@@ -39,5 +36,4 @@ turn = 42; % max turns
 
 while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalCheckLR == 0) & (diagonalCheckRL == 0)
     
-
->>>>>>> 66b95f6413be2592e2c1d3e9c0363612dd0a465a
+    
