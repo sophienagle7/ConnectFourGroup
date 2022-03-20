@@ -1,7 +1,7 @@
 function dummy = connect4()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Constructing Board
+% Constructing Board
 
 row_0x = [0, 7]; row_0y = [0, 0];
 row_1x = [0, 7]; row_1y = [1, 1];
@@ -30,7 +30,7 @@ instructions = title('select your chip placement by clicking the top of your cho
     set(instructions,'FontWeight','bold')
     set(instructions,'FontSize',15)
 
-%% Defining Variables and Setting Game Parameters
+% Defining Variables and Setting Game Parameters
 
 game = zeros(6, 7);
 horizontalCheck = 0; % checks for horizontal winner
@@ -41,23 +41,34 @@ row_click= 0; % row select for 'game' matrix
 turn = 42; % max turns that can be played 
 while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalCheckLR == 0) & (diagonalCheckRL == 0)
 
-%% Player One Turn
+% Player One Turn
+
     [x, y] = ginput(1);
     turn = turn-1;
     row = 1;
-    for row = 1:6
-        if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2
+    while row+1 <= 6
+        if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2 
+%selecting the column using a click, ceil rounds the click location to the
+%nearest whole integer
+%if == 1 or 2, indicates that the bottom row is not occupied, so chip goes
+%in that slot
             row_click = row;
             break
         elseif row <= 6
             row_click = row + 1;
+%this suggests that the selected slot is occupied so the chip will have to
+%go in the slot above (row+1)
         end
         row = row+1;
     end
     game(row_click, ceil(x)) = 1;
-    [dx, dy] = bdisp(row_click, ceil(x));
+   [dx, dy] = disp(row_click, ceil(dx));
     player_one_chip = text(dx+0.5, dy+0.5, 'O', ...
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', 'm')
+%the above code creates the player one chip 
+
+
+
 end
 
