@@ -3,6 +3,7 @@
 function output_variable = connect_four(input_variable)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 %Use a matrix to create the playing board
 Board_Int = randi((10),[6,6]);
 vec_A = [0 1 1 1 1 0];
@@ -25,6 +26,8 @@ axis off
 
 %using a function to create playing chips
 =======
+=======
+>>>>>>> Stashed changes
 
 %Use a matrix to create the playing board
 random_matrix_to_assign = randi((10),[6,6]);
@@ -48,6 +51,9 @@ axis off
 
 %using a function to create playing chips
     %RED CHIP
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 function circles = circle(x,y,r,c)
 hold on
@@ -62,6 +68,10 @@ end
 circleout = circle(3, 4, 2, 'r') 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    %YELLOW CHIP
+>>>>>>> Stashed changes
 =======
     %YELLOW CHIP
 >>>>>>> Stashed changes
@@ -77,8 +87,11 @@ hold off
 axis equal
 end
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 circleout2 = circle2(3, 4, 2, 'y')
 =======
+=======
+>>>>>>> Stashed changes
 circleout2 = circle2(3, 4, 2, 'y') 
 
 
@@ -114,11 +127,15 @@ cx = coords(1) + callback.radius * cos(callback.t);
 cy = coords(2) + callback.radius * sin(callback.t);
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 
 
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 %% Assign Players
 
@@ -226,6 +243,10 @@ end
 %           
 % 
 % end
+=======
+
+
+>>>>>>> Stashed changes
 =======
 
 
