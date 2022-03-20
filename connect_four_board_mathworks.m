@@ -1,5 +1,8 @@
 function dummy = connect4()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Constructing Board
+
 row_0x = [0, 7]; row_0y = [0, 0];
 row_1x = [0, 7]; row_1y = [1, 1];
 row_2x = [0, 7]; row_2y = [2, 2];
@@ -22,18 +25,38 @@ plot(row_0x, row_0y, 'b', row_1x, row_1y, 'b', row_2x, row_2y, 'b', row_3x, row_
 axis off, axis square, ...
      set(gcf, 'color', [0.20000 0.7450 0.9220])
 
-%game on zeros
+instructions = title('select your chip placement by clicking the top of your chosen column');
+    set(instructions, 'color', 'r')
+    set(instructions,'FontWeight','bold')
+    set(instructions,'FontSize',15)
 
-imshow([Board{1,:};Board{2,:};Board{3,:};Board{4,:};Board{5,:};Board{6,:}])
-
+%% Defining Variables and Setting Game Parameters
 game = zeros(6, 7);
 horizontalCheck = 0; % checks for horizontal winner
 verticalCheck = 0; % checks for vertical winner
 diagonalCheckRL = 0; % checks for diagonal winner (right to left)
 diagonalCheckLR = 0; % checks for diagonal winner (left to right)
-r_sel = 0; % row select for 'game' matrix
-turn = 42; % max turns
+row_click= 0; % row select for 'game' matrix
+turn = 42; % max turns that can be played 
 
-while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalCheckLR == 0) & (diagonalCheckRL == 0)
-    
-    
+while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalCheckLR == 0) & (diagonalCheckRL == 0);
+
+% Player One Turn
+    [x, y] = ginput(1);
+    turn = turn-1;
+    row = 1;
+    while row + 1 <= 6
+        if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2
+            row_click = row;
+            break
+        elseif row <= 6
+            row_click = row + 1;
+        end
+        row = row+1;
+    end
+    game(row_click, ceil(x)) = 1;
+    [dx, dy] = bdisp(row_click, ceil(x));
+    te = text(dx+0.5, dy+0.5, 'H', ...
+        'fontsize', 20, 'horizontalalignment', 'center');
+    set(te, 'color', 'm')
+end

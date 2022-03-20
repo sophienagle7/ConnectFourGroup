@@ -1,38 +1,39 @@
 function dummy = connect4()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-row_0 = [0, 7]; hy0 = [0, 0];
-row_1 = [0, 7]; hy1 = [1, 1];
-row_2 = [0, 7]; hy2 = [2, 2];
-row_3 = [0, 7]; hy3 = [3, 3];
-row_4 = [0, 7]; hy4 = [4, 4];
-row_5 = [0, 7]; hy5 = [5, 5];
-row_6 = [0, 7]; hy6 = [6, 6];
-column_0 = [0, 0]; vy0 = [0, 6];
-column_1 = [1, 1]; vy1 = [0, 6];
-column_2 = [2, 2]; vy2 = [0, 6];
-column_3 = [3, 3]; vy3 = [0, 6];
-column_4 = [4, 4]; vy4 = [0, 6];
-column_5 = [5, 5]; vy5 = [0, 6];
-column_6 = [6, 6]; vy6 = [0, 6];
-column_7 = [7, 7]; vy7 = [0, 6];
+
+%% Constructing Board
+
+row_0x = [0, 7]; row_0y = [0, 0];
+row_1x = [0, 7]; row_1y = [1, 1];
+row_2x = [0, 7]; row_2y = [2, 2];
+row_3x = [0, 7]; row_3y = [3, 3];
+row_4x = [0, 7]; row_4y = [4, 4];
+row_5x = [0, 7]; row_5y = [5, 5];
+row_6x = [0, 7]; row_6y = [6, 6];
+column_0x = [0, 0]; column_0y = [0, 6];
+column_1x = [1, 1]; column_1y = [0, 6];
+column_2x = [2, 2]; column_2y = [0, 6];
+column_3x = [3, 3]; column_3y = [0, 6];
+column_4x = [4, 4]; column_4y = [0, 6];
+column_5x = [5, 5]; column_5y = [0, 6];
+column_6x = [6, 6]; column_6y = [0, 6];
+column_7x = [7, 7]; column_7y = [0, 6];
 clf
-plot(hx0, hy0, 'b', hx1, hy1, 'b', hx2, hy2, 'b', hx3, hy3, 'b', hx4, hy4, 'b', hx5, hy5, 'b', hx6, hy6, 'b', ...
-    vx0, vy0, 'b', vx1, vy1, 'b', vx2, vy2, 'b', vx3, vy3, 'b', vx4, vy4, 'b', vx5, vy5, 'b', vx6, vy6, 'b', ...
-    vx7, vy7, 'b')
+plot(row_0x, row_0y, 'b', row_1x, row_1y, 'b', row_2x, row_2y, 'b', row_3x, row_3y, 'b', row_4x, row_4y, 'b', row_5x, row_5y, 'b', row_6x, row_6y, 'b', ...
+    column_0x, column_0y, 'b', column_1x, column_1y, 'b', column_2x, column_2y, 'b', column_3x, column_3y, 'b', column_4x, column_4y, 'b', column_5x, column_5y, 'b', column_6x, column_6y, 'b', ...
+    column_7x, column_7y, 'b')
 axis off, axis square, ...
      set(gcf, 'color', [0.20000 0.7450 0.9220])
-pause(2)
 
-game on zeros
-
-imshow([Board{1,:};Board{2,:};Board{3,:};Board{4,:};Board{5,:};Board{6,:}])
-
+%% Def
 game = zeros(6, 7);
 horizontalCheck = 0; % checks for horizontal winner
 verticalCheck = 0; % checks for vertical winner
 diagonalCheckRL = 0; % checks for diagonal winner (right to left)
 diagonalCheckLR = 0; % checks for diagonal winner (left to right)
-r_sel = 0; % row select for 'game' matrix
-turn = 42; % max turns
+row_click= 0; % row select for 'game' matrix
+turn = 42; % max turns that can be played
 
+while (turn ~= 0) & (horizontalCheck == 0) & (verticalCheck == 0) & (diagonalCheckLR == 0) & (diagonalCheckRL == 0)
+    
 
