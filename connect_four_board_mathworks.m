@@ -29,7 +29,7 @@ axis off, axis square, ...
 %setting color of background and grid to blue
 
 instructions = title('select your chip placement by clicking the top of your chosen column');
-    set(instructions, 'color', 'm')
+    set(instructions, 'color', 'w')
     set(instructions,'FontWeight','bold')
     set(instructions,'FontSize',15)
 
@@ -182,7 +182,7 @@ end
     turn = turn-1;
     row = 1;
     while row+1 <= 6
-        if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2 
+        if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2  
 %selecting the column using a click, ceil rounds the click location to the
 %nearest whole integer which determines the column that the click is
 %associated with
@@ -197,7 +197,7 @@ end
         end
         row = row+1;
     end
-    game(row_click, ceil(x)) = 1;
+    game(row_click, ceil(x)) = 2;
    [dx, dy] = bdisp(row_click, ceil(x));
     player_one_chip = text(dx+0.5, dy+0.5, 'O', ...
         'fontsize', 20, 'horizontalalignment', 'center');
@@ -211,7 +211,7 @@ end
             if horizontalcheck == 3
                 if game(ii, jj) == 2
                     player_two_winner_announcement = title('Player Two Wins');
-                    set(player_two_winner_announcement, 'color', 'm')
+                    set(player_two_winner_announcement, 'color', 'y')
                     set(player_two_winner_announcement,'FontWeight','bold')
                     set(player_two_winner_announcement,'FontSize',19)
                 end
@@ -235,7 +235,7 @@ end
             if verticalCheck == 3
                 if game(iii, jjj) == 2
                     player_two_winner_announcement = title('Player Two Wins');
-                    set(player_two_winner_announcement, 'color', 'm')
+                    set(player_two_winner_announcement, 'color', 'y')
                     set(player_two_winner_announcement,'FontWeight','bold')
                     set(player_two_winner_announcement,'FontSize',19)
                 end
@@ -257,7 +257,7 @@ end
             if diagonalCheckRL == 3
                 if game(tt, hh) == 2
                     player_two_winner_announcement = title('Player Two Wins');
-                    set(player_two_winner_announcement, 'color', 'm')
+                    set(player_two_winner_announcement, 'color', 'y')
                     set(player_two_winner_announcement,'FontWeight','bold')
                     set(player_two_winner_announcement,'FontSize',19)
                 end
@@ -280,7 +280,7 @@ end
             if diagonalCheckLR == 3
                 if game(ttt, hhh) == 2
                     player_two_winner_announcement = title('Player Two Wins');
-                    set(player_two_winner_announcement, 'color', 'm')
+                    set(player_two_winner_announcement, 'color', 'y')
                     set(player_two_winner_announcement,'FontWeight','bold')
                     set(player_two_winner_announcement,'FontSize',19)
                 end
