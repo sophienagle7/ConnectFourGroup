@@ -1,4 +1,4 @@
-function connect_four_output = connect4()
+function connect_four_output = connect_four_board_mathworks()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Constructing Board
@@ -74,7 +74,7 @@ while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonal
     end
     game(row_click, ceil(x)) = 1;
    [dx, dy] = bdisp(row_click, ceil(x));
-    player_one_chip = text(dx+0.5, dy+0.5, 'O', ...
+    player_one_chip = text(dx+0.5, dy+0.5, '1', ...
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', 'm')
 %the above code creates the player one chip (which is pink)
@@ -199,7 +199,7 @@ end
     end
     game(row_click, ceil(x)) = 1;
    [dx, dy] = bdisp(row_click, ceil(x));
-    player_one_chip = text(dx+0.5, dy+0.5, 'O', ...
+    player_one_chip = text(dx+0.5, dy+0.5, '2', ...
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', 'y')
 %the above code creates the player two chip (which is yellow)
@@ -307,109 +307,107 @@ end
 %statement above says that if any one of the four winning conditions is
 %satisfied by either a one or a two (player one or player two), that player
 %respectivley has won and q=3. If not, there is no winner and q=0
+%if any one of the four checks is not zero, it means that that check has
+%been fulfilled and Player Two has won the game, so the game ends
 end
 end
 
-%% NEW SECTION TWO -- UNDERSTAND BETTER AND WORK WITH 
-function [dx, dy] = bdisp(r, c); %To display the recent move.
+%% NEW SECTION  -- UNDERSTAND BETTER AND WORK WITH 
+function [dx, dy] = bdisp(r, c) %To display the recent move.
         % for row 6
-        if r == 6 & c == 1
+        if r == 6 && c == 1
             dx = 0; dy = 0;
-        elseif r == 6 & c == 2
+        elseif r == 6 && c == 2
             dx = 1; dy = 0;
-        elseif r == 6 & c == 3
+        elseif r == 6 && c == 3
             dx = 2; dy = 0;
-        elseif r == 6 & c == 4
+        elseif r == 6 && c == 4
             dx = 3; dy = 0;
-        elseif r == 6 & c == 5
+        elseif r == 6 && c == 5
             dx = 4; dy = 0;
-        elseif r == 6 & c == 6
+        elseif r == 6 && c == 6
             dx = 5; dy = 0;
-        elseif r == 6 & c == 7
+        elseif r == 6 && c == 7
             dx = 6; dy = 0;
             % for row 5
-        elseif r == 5 & c == 1
+        elseif r == 5 && c == 1
             dx = 0; dy = 1;
-        elseif r == 5 & c == 2
+        elseif r == 5 && c == 2
             dx = 1; dy = 1;
-        elseif r == 5 & c == 3
+        elseif r == 5 && c == 3
             dx = 2; dy = 1;
-        elseif r == 5 & c == 4
+        elseif r == 5 && c == 4
             dx = 3; dy = 1;
-        elseif r == 5 & c == 5
+        elseif r == 5 && c == 5
             dx = 4; dy = 1;
-        elseif r == 5 & c == 6
+        elseif r == 5 && c == 6
             dx = 5; dy = 1;
-        elseif r == 5 & c == 7
+        elseif r == 5 && c == 7
             dx = 6; dy = 1;
             % for row 4
-        elseif r == 4 & c == 1
+        elseif r == 4 && c == 1
             dx = 0; dy = 2;
-        elseif r == 4 & c == 2
+        elseif r == 4 && c == 2
             dx = 1; dy = 2;
-        elseif r == 4 & c == 3
+        elseif r == 4 && c == 3
             dx = 2; dy = 2;
-        elseif r == 4 & c == 4
+        elseif r == 4 && c == 4
             dx = 3; dy = 2;
-        elseif r == 4 & c == 5
+        elseif r == 4 && c == 5
             dx = 4; dy = 2;
-        elseif r == 4 & c == 6
+        elseif r == 4 && c == 6
             dx = 5; dy = 2;
-        elseif r == 4 & c == 7
+        elseif r == 4 && c == 7
             dx = 6; dy = 2;
             % for row 3
-        elseif r == 3 & c == 1
+        elseif r == 3 && c == 1
             dx = 0; dy = 3;
-        elseif r == 3 & c == 2
+        elseif r == 3 && c == 2
             dx = 1; dy = 3;
-        elseif r == 3 & c == 3
+        elseif r == 3 && c == 3
             dx = 2; dy = 3;
-        elseif r == 3 & c == 4
+        elseif r == 3 && c == 4
             dx = 3; dy = 3;
-        elseif r == 3 & c == 5
+        elseif r == 3 && c == 5
             dx = 4; dy = 3;
-        elseif r == 3 & c == 6
+        elseif r == 3 && c == 6
             dx = 5; dy = 3;
-        elseif r == 3 & c == 7
+        elseif r == 3 && c == 7
             dx = 6; dy = 3;
             % for row 2
-        elseif r == 2 & c == 1
+        elseif r == 2 && c == 1
             dx = 0; dy = 4;
-        elseif r == 2 & c == 2
+        elseif r == 2 && c == 2
             dx = 1; dy = 4;
-        elseif r == 2 & c == 3
+        elseif r == 2 && c == 3
             dx = 2; dy = 4;
-        elseif r == 2 & c == 4
+        elseif r == 2 && c == 4
             dx = 3; dy = 4;
-        elseif r == 2 & c == 5
+        elseif r == 2 && c == 5
             dx = 4; dy = 4;
-        elseif r == 2 & c == 6
+        elseif r == 2 && c == 6
             dx = 5; dy = 4;
-        elseif r == 2 & c == 7
+        elseif r == 2 && c == 7
             dx = 6; dy = 4;
             % for row 1
-        elseif r == 1 & c == 1
+        elseif r == 1 && c == 1
             dx = 0; dy = 5;
-        elseif r == 1 & c == 2
+        elseif r == 1 && c == 2
             dx = 1; dy = 5;
-        elseif r == 1 & c == 3
+        elseif r == 1 && c == 3
             dx = 2; dy = 5;
-        elseif r == 1 & c == 4
+        elseif r == 1 && c == 4
             dx = 3; dy = 5;
-        elseif r == 1 & c == 5
+        elseif r == 1 && c == 5
             dx = 4; dy = 5;
-        elseif r == 1 & c == 6
+        elseif r == 1 && c == 6
             dx = 5; dy = 5;
-        elseif r == 1 & c == 7
+        elseif r == 1 && c == 7
             dx = 6; dy = 5;
         end
 end
 
-
-%if any one of the four checks is not zero, it means that that check has
-%been fulfilled and Player Two has won the game, so the game ends
-
-% %% Function that defines check function used previously to determine wins  
+%% Function that defines check function used previously to determine wins  
  function [q] = check(b1, b2, b3, b4)
          if (b1 == 1 && b2 == 1 && b3 == 1 && b4 == 1) || (b1 == 2 && b2 == 2 && b3 == 2 && b4 == 2)
              q = 3;
@@ -426,101 +424,4 @@ end
 % %statement above says that if any one of the four winning conditions is
 % %satisfied by either a one or a two (player one or player two), that player
 % %respectivley has won and q=3. If not, there is no winner and q=0
-% 
-% %% NEW SECTION TWO -- UNDERSTAND BETTER AND WORK WITH 
-% function [dx, dy] = bdisp(r, c); %To display the recent move.
-%         % for row 6
-%         if r == 6 & c == 1
-%             dx = 0; dy = 0;
-%         elseif r == 6 & c == 2
-%             dx = 1; dy = 0;
-%         elseif r == 6 & c == 3
-%             dx = 2; dy = 0;
-%         elseif r == 6 & c == 4
-%             dx = 3; dy = 0;
-%         elseif r == 6 & c == 5
-%             dx = 4; dy = 0;
-%         elseif r == 6 & c == 6
-%             dx = 5; dy = 0;
-%         elseif r == 6 & c == 7
-%             dx = 6; dy = 0;
-%             % for row 5
-%         elseif r == 5 & c == 1
-%             dx = 0; dy = 1;
-%         elseif r == 5 & c == 2
-%             dx = 1; dy = 1;
-%         elseif r == 5 & c == 3
-%             dx = 2; dy = 1;
-%         elseif r == 5 & c == 4
-%             dx = 3; dy = 1;
-%         elseif r == 5 & c == 5
-%             dx = 4; dy = 1;
-%         elseif r == 5 & c == 6
-%             dx = 5; dy = 1;
-%         elseif r == 5 & c == 7
-%             dx = 6; dy = 1;
-%             % for row 4
-%         elseif r == 4 & c == 1
-%             dx = 0; dy = 2;
-%         elseif r == 4 & c == 2
-%             dx = 1; dy = 2;
-%         elseif r == 4 & c == 3
-%             dx = 2; dy = 2;
-%         elseif r == 4 & c == 4
-%             dx = 3; dy = 2;
-%         elseif r == 4 & c == 5
-%             dx = 4; dy = 2;
-%         elseif r == 4 & c == 6
-%             dx = 5; dy = 2;
-%         elseif r == 4 & c == 7
-%             dx = 6; dy = 2;
-%             % for row 3
-%         elseif r == 3 & c == 1
-%             dx = 0; dy = 3;
-%         elseif r == 3 & c == 2
-%             dx = 1; dy = 3;
-%         elseif r == 3 & c == 3
-%             dx = 2; dy = 3;
-%         elseif r == 3 & c == 4
-%             dx = 3; dy = 3;
-%         elseif r == 3 & c == 5
-%             dx = 4; dy = 3;
-%         elseif r == 3 & c == 6
-%             dx = 5; dy = 3;
-%         elseif r == 3 & c == 7
-%             dx = 6; dy = 3;
-%             % for row 2
-%         elseif r == 2 & c == 1
-%             dx = 0; dy = 4;
-%         elseif r == 2 & c == 2
-%             dx = 1; dy = 4;
-%         elseif r == 2 & c == 3
-%             dx = 2; dy = 4;
-%         elseif r == 2 & c == 4
-%             dx = 3; dy = 4;
-%         elseif r == 2 & c == 5
-%             dx = 4; dy = 4;
-%         elseif r == 2 & c == 6
-%             dx = 5; dy = 4;
-%         elseif r == 2 & c == 7
-%             dx = 6; dy = 4;
-%             % for row 1
-%         elseif r == 1 & c == 1
-%             dx = 0; dy = 5;
-%         elseif r == 1 & c == 2
-%             dx = 1; dy = 5;
-%         elseif r == 1 & c == 3
-%             dx = 2; dy = 5;
-%         elseif r == 1 & c == 4
-%             dx = 3; dy = 5;
-%         elseif r == 1 & c == 5
-%             dx = 4; dy = 5;
-%         elseif r == 1 & c == 6
-%             dx = 5; dy = 5;
-%         elseif r == 1 & c == 7
-%             dx = 6; dy = 5;
-%         end
-%     end
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% end
- 
+%  
