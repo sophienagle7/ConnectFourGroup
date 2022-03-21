@@ -82,7 +82,7 @@ while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonal
 %% Look for win by rows for Player One
     for ii = 1:6
         for jj = 1:4
-            horizontalcheck = check(game(ii, jj), game(ii, (jj+1)), game(ii, (jj+2)), game(ii, (jj+3)));
+            horizontalcheck = DetermineWinner(game(ii, jj), game(ii, (jj+1)), game(ii, (jj+2)), game(ii, (jj+3)));
             if horizontalcheck == 3
                 if game(ii, jj) == 1
                     player_one_winner_announcement = title('Player One Wins');
@@ -106,7 +106,7 @@ while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonal
 %% Look for win by columns for Player One
     for jjj = 1:7
         for iii = 1:3
-            verticalCheck = check(game(iii, jjj), game((iii+1), jjj), game((iii+2), jjj), game((iii+3), jjj));
+            verticalCheck = DetermineWinner(game(iii, jjj), game((iii+1), jjj), game((iii+2), jjj), game((iii+3), jjj));
             if verticalCheck == 3
                 if game(iii, jjj) == 1
                     player_one_winner_announcement = title('Player One Wins');
@@ -128,7 +128,7 @@ while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonal
 %% Look for a win diagonally (right to left) for Player One
     for hh = 1:4
         for tt = 1:3
-            diagonalCheckRL = check(game(tt, hh), game((tt+1), (hh+1)), game((tt+2), (hh+2)), game((tt+3), (hh+3)));
+            diagonalCheckRL = DetermineWinner(game(tt, hh), game((tt+1), (hh+1)), game((tt+2), (hh+2)), game((tt+3), (hh+3)));
             if diagonalCheckRL == 3
                 if game(tt, hh) == 1
                     player_one_winner_announcement = title('Player One Wins');
@@ -151,7 +151,7 @@ while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonal
 %% Look for a win diagonally (left to right) for Player One
     for hhh = 7:-1:4
         for ttt = 1:3
-            diagonalCheckLR = check(game(ttt, hhh), game((ttt+1), (hhh-1)), game((ttt+2), (hhh-2)), game((ttt+3), (hhh-3)));
+            diagonalCheckLR = DetermineWinner(game(ttt, hhh), game((ttt+1), (hhh-1)), game((ttt+2), (hhh-2)), game((ttt+3), (hhh-3)));
             if diagonalCheckLR == 3
                 if game(ttt, hhh) == 1
                     player_one_winner_announcement = title('Player One Wins');
@@ -207,7 +207,7 @@ end
 %% Look for win by rows for Player Two
     for ii = 1:6
         for jj = 1:4
-            horizontalcheck = check(game(ii, jj), game(ii, (jj+1)), game(ii, (jj+2)), game(ii, (jj+3)));
+            horizontalcheck = DetermineWinner(game(ii, jj), game(ii, (jj+1)), game(ii, (jj+2)), game(ii, (jj+3)));
             if horizontalcheck == 3
                 if game(ii, jj) == 2
                     player_two_winner_announcement = title('Player Two Wins');
@@ -231,7 +231,7 @@ end
 %% Look for win by columns for Player Two
     for jjj = 1:7
         for iii = 1:3
-            verticalCheck = check(game(iii, jjj), game((iii+1), jjj), game((iii+2), jjj), game((iii+3), jjj));
+            verticalCheck = DetermineWinner(game(iii, jjj), game((iii+1), jjj), game((iii+2), jjj), game((iii+3), jjj));
             if verticalCheck == 3
                 if game(iii, jjj) == 2
                     player_two_winner_announcement = title('Player Two Wins');
@@ -253,7 +253,7 @@ end
 %% Look for a win diagonally (right to left) for Player Two
     for hh = 1:4
         for tt = 1:3
-            diagonalCheckRL = check(game(tt, hh), game((tt+1), (hh+1)), game((tt+2), (hh+2)), game((tt+3), (hh+3)));
+            diagonalCheckRL = DetermineWinner(game(tt, hh), game((tt+1), (hh+1)), game((tt+2), (hh+2)), game((tt+3), (hh+3)));
             if diagonalCheckRL == 3
                 if game(tt, hh) == 2
                     player_two_winner_announcement = title('Player Two Wins');
@@ -276,7 +276,7 @@ end
 %% Look for a win diagonally (left to right) for Player Two
     for hhh = 7:-1:4
         for ttt = 1:3
-            diagonalCheckLR = check(game(ttt, hhh), game((ttt+1), (hhh-1)), game((ttt+2), (hhh-2)), game((ttt+3), (hhh-3)));
+            diagonalCheckLR = DetermineWinner(game(ttt, hhh), game((ttt+1), (hhh-1)), game((ttt+2), (hhh-2)), game((ttt+3), (hhh-3)));
             if diagonalCheckLR == 3
                 if game(ttt, hhh) == 2
                     player_two_winner_announcement = title('Player Two Wins');
@@ -429,12 +429,12 @@ function [dx, dy] = disp_chip(row, column) %To display the recent move.
 end
 
 %% Function that defines check function used previously to determine wins  
- function [q] = check(b1, b2, b3, b4)
-         if (b1 == 1 && b2 == 1 && b3 == 1 && b4 == 1) || (b1 == 2 && b2 == 2 && b3 == 2 && b4 == 2)
-             q = 3;
+function [winner] = DetermineWinner(HorizontalInput, VerticalInput, DiagonalInputLR, DiagonalInputRL)
+         if (HorizontalInput == 1 && VerticalInput == 1 && DiagonalInputLR == 1 && DiagonalInputRL == 1) || (HorizontalInput == 2 && VerticalInput == 2 && DiagonalInputLR == 2 && DiagonalInputRL == 2)
+             winner = 3;
              return
          else
-             q = 0;
+             winner = 0;
              return
          end
  end
