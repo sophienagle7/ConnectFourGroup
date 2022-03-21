@@ -73,7 +73,7 @@ while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonal
         row = row+1;
     end
     game(row_click, ceil(x)) = 1;
-   [dx, dy] = bdisp(row_click, ceil(x));
+   [dx, dy] = disp_chip(row_click, ceil(x));
     player_one_chip = text(dx+0.5, dy+0.5, '1', ...
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', 'm')
@@ -198,7 +198,7 @@ end
         row = row+1;
     end
     game(row_click, ceil(x)) = 2;
-   [dx, dy] = bdisp(row_click, ceil(x));
+   [dx, dy] = disp_chip(row_click, ceil(x));
     player_one_chip = text(dx+0.5, dy+0.5, '2', ...
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', 'y')
@@ -313,96 +313,96 @@ end
 end
 
 %% NEW SECTION  -- UNDERSTAND BETTER AND WORK WITH 
-function [dx, dy] = bdisp(r, c) %To display the recent move.
-        % for row 6
-        if r == 6 && c == 1
+function [dx, dy] = disp_chip(row, column) %To display the recent move.
+% for row 6
+        if row == 6 && column == 1
             dx = 0; dy = 0;
-        elseif r == 6 && c == 2
+        elseif row == 6 && column == 2
             dx = 1; dy = 0;
-        elseif r == 6 && c == 3
+        elseif row == 6 && column == 3
             dx = 2; dy = 0;
-        elseif r == 6 && c == 4
+        elseif row == 6 && column == 4
             dx = 3; dy = 0;
-        elseif r == 6 && c == 5
+        elseif row == 6 && column == 5
             dx = 4; dy = 0;
-        elseif r == 6 && c == 6
+        elseif row == 6 && column == 6
             dx = 5; dy = 0;
-        elseif r == 6 && c == 7
+        elseif row == 6 && column == 7
             dx = 6; dy = 0;
-            % for row 5
-        elseif r == 5 && c == 1
+% for row 5
+        elseif row == 5 && column == 1
             dx = 0; dy = 1;
-        elseif r == 5 && c == 2
+        elseif row == 5 && column == 2
             dx = 1; dy = 1;
-        elseif r == 5 && c == 3
+        elseif row == 5 && column == 3
             dx = 2; dy = 1;
-        elseif r == 5 && c == 4
+        elseif row == 5 && column == 4
             dx = 3; dy = 1;
-        elseif r == 5 && c == 5
+        elseif row == 5 && column == 5
             dx = 4; dy = 1;
-        elseif r == 5 && c == 6
+        elseif row == 5 && column == 6
             dx = 5; dy = 1;
-        elseif r == 5 && c == 7
+        elseif row == 5 && column == 7
             dx = 6; dy = 1;
-            % for row 4
-        elseif r == 4 && c == 1
+% for row 4
+        elseif row == 4 && column == 1
             dx = 0; dy = 2;
-        elseif r == 4 && c == 2
+        elseif row == 4 && column == 2
             dx = 1; dy = 2;
-        elseif r == 4 && c == 3
+        elseif row == 4 && column == 3
             dx = 2; dy = 2;
-        elseif r == 4 && c == 4
+        elseif row == 4 && column == 4
             dx = 3; dy = 2;
-        elseif r == 4 && c == 5
+        elseif row == 4 && column == 5
             dx = 4; dy = 2;
-        elseif r == 4 && c == 6
+        elseif row == 4 && column == 6
             dx = 5; dy = 2;
-        elseif r == 4 && c == 7
+        elseif row == 4 && column == 7
             dx = 6; dy = 2;
-            % for row 3
-        elseif r == 3 && c == 1
+% for row 3
+        elseif row == 3 && column == 1
             dx = 0; dy = 3;
-        elseif r == 3 && c == 2
+        elseif row == 3 && column == 2
             dx = 1; dy = 3;
-        elseif r == 3 && c == 3
+        elseif row == 3 && column == 3
             dx = 2; dy = 3;
-        elseif r == 3 && c == 4
+        elseif row == 3 && column == 4
             dx = 3; dy = 3;
-        elseif r == 3 && c == 5
+        elseif row == 3 && column == 5
             dx = 4; dy = 3;
-        elseif r == 3 && c == 6
+        elseif row == 3 && column == 6
             dx = 5; dy = 3;
-        elseif r == 3 && c == 7
+        elseif row == 3 && column == 7
             dx = 6; dy = 3;
-            % for row 2
-        elseif r == 2 && c == 1
+% for row 2
+        elseif row == 2 && column == 1
             dx = 0; dy = 4;
-        elseif r == 2 && c == 2
+        elseif row == 2 && column == 2
             dx = 1; dy = 4;
-        elseif r == 2 && c == 3
+        elseif row == 2 && column == 3
             dx = 2; dy = 4;
-        elseif r == 2 && c == 4
+        elseif row == 2 && column == 4
             dx = 3; dy = 4;
-        elseif r == 2 && c == 5
+        elseif row == 2 && column == 5
             dx = 4; dy = 4;
-        elseif r == 2 && c == 6
+        elseif row == 2 && column == 6
             dx = 5; dy = 4;
-        elseif r == 2 && c == 7
+        elseif row == 2 && column == 7
             dx = 6; dy = 4;
-            % for row 1
-        elseif r == 1 && c == 1
+% for row 1
+        elseif row == 1 && column == 1
             dx = 0; dy = 5;
-        elseif r == 1 && c == 2
+        elseif row == 1 && column == 2
             dx = 1; dy = 5;
-        elseif r == 1 && c == 3
+        elseif row == 1 && column == 3
             dx = 2; dy = 5;
-        elseif r == 1 && c == 4
+        elseif row == 1 && column == 4
             dx = 3; dy = 5;
-        elseif r == 1 && c == 5
+        elseif row == 1 && column == 5
             dx = 4; dy = 5;
-        elseif r == 1 && c == 6
+        elseif row == 1 && column == 6
             dx = 5; dy = 5;
-        elseif r == 1 && c == 7
+        elseif row == 1 && column == 7
             dx = 6; dy = 5;
         end
 end
