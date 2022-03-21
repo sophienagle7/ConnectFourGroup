@@ -73,7 +73,7 @@ while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonal
         row = row+1;
     end
     game(row_click, ceil(x)) = 1;
-   [dx, dy] = bdisp(row_click, ceil(x));
+   [dx, dy] = disp_chip(row_click, ceil(x));
     player_one_chip = text(dx+0.5, dy+0.5, '1', ...
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', 'm')
@@ -198,7 +198,7 @@ end
         row = row+1;
     end
     game(row_click, ceil(x)) = 2;
-   [dx, dy] = bdisp(row_click, ceil(x));
+   [dx, dy] = disp_chip(row_click, ceil(x));
     player_one_chip = text(dx+0.5, dy+0.5, '2', ...
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', 'y')
@@ -313,8 +313,9 @@ end
 end
 
 %% NEW SECTION  -- UNDERSTAND BETTER AND WORK WITH 
-function [dx, dy] = bdisp(row, column) %To display the recent move.
-        % for row 6
+function [dx, dy] = disp_chip(row, column) %To display the recent move.
+% for row 6
+
         if row == 6 && column == 1
             dx = 0; dy = 0;
         elseif row == 6 && column == 2
@@ -329,7 +330,11 @@ function [dx, dy] = bdisp(row, column) %To display the recent move.
             dx = 5; dy = 0;
         elseif row == 6 && column == 7
             dx = 6; dy = 0;
+
             % for row 5
+
+% for row 5
+
         elseif row == 5 && column == 1
             dx = 0; dy = 1;
         elseif row == 5 && column == 2
@@ -344,7 +349,11 @@ function [dx, dy] = bdisp(row, column) %To display the recent move.
             dx = 5; dy = 1;
         elseif row == 5 && column == 7
             dx = 6; dy = 1;
+
             % for row 4
+
+% for row 4
+
         elseif row == 4 && column == 1
             dx = 0; dy = 2;
         elseif row == 4 && column == 2
@@ -359,7 +368,11 @@ function [dx, dy] = bdisp(row, column) %To display the recent move.
             dx = 5; dy = 2;
         elseif row == 4 && column == 7
             dx = 6; dy = 2;
+
             % for row 3
+
+% for row 3
+
         elseif row == 3 && column == 1
             dx = 0; dy = 3;
         elseif row == 3 && column == 2
@@ -374,7 +387,11 @@ function [dx, dy] = bdisp(row, column) %To display the recent move.
             dx = 5; dy = 3;
         elseif row == 3 && column == 7
             dx = 6; dy = 3;
+
             % for row 2
+
+% for row 2
+
         elseif row == 2 && column == 1
             dx = 0; dy = 4;
         elseif row == 2 && column == 2
@@ -389,7 +406,11 @@ function [dx, dy] = bdisp(row, column) %To display the recent move.
             dx = 5; dy = 4;
         elseif row == 2 && column == 7
             dx = 6; dy = 4;
+
             % for row 1
+
+% for row 1
+
         elseif row == 1 && column == 1
             dx = 0; dy = 5;
         elseif row == 1 && column == 2
