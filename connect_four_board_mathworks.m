@@ -44,8 +44,12 @@ diagonalCheckRL = 0; % checks for diagonal winner (right to left)
 diagonalCheckLR = 0; % checks for diagonal winner (left to right)
 row_click= 0; % row select for 'game' matrix
 turn = 42; % max turns that can be played 
-while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonalCheckLR == 0) && (diagonalCheckRL == 0)
-
+while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonalCheckLR == 0)  && (diagonalCheckRL == 0)
+turn
+horizontalCheck
+verticalCheck
+diagonalCheckRL
+diagonalCheckLR
 %creating gameboard and setting variables that will be used later when
 %checking for wins and playing the game
 %using while statement to establish when the game should be played or not
@@ -53,7 +57,7 @@ while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonal
 
 %% Player One Turn
 
-    [x, y] = ginput(1);
+    [x, ~] = ginput(1);
     turn = turn-1;
     row = 1;
     while row+1 <= 6
@@ -178,7 +182,7 @@ end
 %been fulfilled and Player One has won the game, so the game ends
 
 %% Player Two Turn
-    [x, y] = ginput(1);
+    [x, ~] = ginput(1);
     turn = turn-1;
     row = 1;
     while row+1 <= 6
@@ -314,8 +318,7 @@ end
 
 %% NEW SECTION  -- UNDERSTAND BETTER AND WORK WITH 
 function [dx, dy] = disp_chip(row, column) %To display the recent move.
-% for row 6
-
+               % for row 6
         if row == 6 && column == 1
             dx = 0; dy = 0;
         elseif row == 6 && column == 2
@@ -330,11 +333,7 @@ function [dx, dy] = disp_chip(row, column) %To display the recent move.
             dx = 5; dy = 0;
         elseif row == 6 && column == 7
             dx = 6; dy = 0;
-
             % for row 5
-
-% for row 5
-
         elseif row == 5 && column == 1
             dx = 0; dy = 1;
         elseif row == 5 && column == 2
@@ -349,11 +348,7 @@ function [dx, dy] = disp_chip(row, column) %To display the recent move.
             dx = 5; dy = 1;
         elseif row == 5 && column == 7
             dx = 6; dy = 1;
-
             % for row 4
-
-% for row 4
-
         elseif row == 4 && column == 1
             dx = 0; dy = 2;
         elseif row == 4 && column == 2
@@ -368,11 +363,7 @@ function [dx, dy] = disp_chip(row, column) %To display the recent move.
             dx = 5; dy = 2;
         elseif row == 4 && column == 7
             dx = 6; dy = 2;
-
             % for row 3
-
-% for row 3
-
         elseif row == 3 && column == 1
             dx = 0; dy = 3;
         elseif row == 3 && column == 2
@@ -387,11 +378,7 @@ function [dx, dy] = disp_chip(row, column) %To display the recent move.
             dx = 5; dy = 3;
         elseif row == 3 && column == 7
             dx = 6; dy = 3;
-
             % for row 2
-
-% for row 2
-
         elseif row == 2 && column == 1
             dx = 0; dy = 4;
         elseif row == 2 && column == 2
@@ -406,11 +393,7 @@ function [dx, dy] = disp_chip(row, column) %To display the recent move.
             dx = 5; dy = 4;
         elseif row == 2 && column == 7
             dx = 6; dy = 4;
-
             % for row 1
-
-% for row 1
-
         elseif row == 1 && column == 1
             dx = 0; dy = 5;
         elseif row == 1 && column == 2
@@ -445,4 +428,3 @@ function [winner] = DetermineWinner(HorizontalInput, VerticalInput, DiagonalInpu
 % %statement above says that if any one of the four winning conditions is
 % %satisfied by either a one or a two (player one or player two), that player
 % %respectivley has won and q=3. If not, there is no winner and q=0
-%  
