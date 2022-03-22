@@ -78,6 +78,8 @@ diagonalCheckLR
             row_click = row + 1;
 %this suggests that the selected slot is occupied so the chip will have to
 %go in the slot above (row+1)
+%this is where we should add in if statement to stop the chips at the top
+%of a column (i think)
         end
         row = row+1;
     end
