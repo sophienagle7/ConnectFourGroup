@@ -44,10 +44,17 @@ diagonalCheckRL = 0; % checks for diagonal winner (right to left)
 diagonalCheckLR = 0; % checks for diagonal winner (left to right)
 row_click= 0; % row select for 'game' matrix
 turn = 42; % max turns that can be played 
-while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonalCheckLR == 0) || (diagonalCheckRL == 0)
+whos_turn = 1;
+
+player_color = {'r';'y'};
+
+
+while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonalCheckLR == 0)  && (diagonalCheckRL == 0)
 turn
 horizontalCheck
 verticalCheck
+diagonalCheckRL
+diagonalCheckLR
 %creating gameboard and setting variables that will be used later when
 %checking for wins and playing the game
 %using while statement to establish when the game should be played or not
@@ -74,28 +81,34 @@ verticalCheck
         end
         row = row+1;
     end
-    game(row_click, ceil(x)) = 1;
+    game(row_click, ceil(x)) = whos_turn;
    [dx, dy] = disp_chip(row_click, ceil(x));
-    player_one_chip = text(dx+0.5, dy+0.5, '1', ...
+    player_one_chip = text(dx+0.5, dy+0.5, num2str(whos_turn), ...
         'fontsize', 20, 'horizontalalignment', 'center');
-    set(player_one_chip, 'color', 'm')
+    set(player_one_chip, 'color', player_color{whos_turn})
 %the above code creates the player one chip (which is pink)
 
 %% Look for win by rows for Player One
     for ii = 1:6
         for jj = 1:4
-            horizontalcheck = DetermineWinner(game(ii, jj), game(ii, (jj+1)), game(ii, (jj+2)), game(ii, (jj+3)));
-            if horizontalcheck == 3
+            minihorizontalcheck = DetermineWinner(game(ii, jj), game(ii, (jj+1)), game(ii, (jj+2)), game(ii, (jj+3)));
+            if minihorizontalcheck == 3
+                horizontalCheck = 3;
                 if game(ii, jj) == 1
                     player_one_winner_announcement = title('Player One Wins');
                     set(player_one_winner_announcement, 'color', 'm')
                     set(player_one_winner_announcement,'FontWeight','bold')
                     set(player_one_winner_announcement,'FontSize',19)
+                elseif game(ii, jj) == 2
+                    player_two_winner_announcement = title('Player Two Wins');
+                    set(player_two_winner_announcement, 'color', 'y')
+                    set(player_two_winner_announcement,'FontWeight','bold')
+                    set(player_two_winner_announcement,'FontSize',19)
                 end
                 break
             end
         end
-        if horizontalcheck == 3
+        if horizontalCheck == 3
             break
             
         end
@@ -108,13 +121,19 @@ verticalCheck
 %% Look for win by columns for Player One
     for jjj = 1:7
         for iii = 1:3
-            verticalCheck = DetermineWinner(game(iii, jjj), game((iii+1), jjj), game((iii+2), jjj), game((iii+3), jjj));
-            if verticalCheck == 3
+            miniverticalCheck = DetermineWinner(game(iii, jjj), game((iii+1), jjj), game((iii+2), jjj), game((iii+3), jjj));
+            if miniverticalCheck == 3
+                verticalCheck = 3;
                 if game(iii, jjj) == 1
                     player_one_winner_announcement = title('Player One Wins');
                     set(player_one_winner_announcement, 'color', 'm')
                     set(player_one_winner_announcement,'FontWeight','bold')
                     set(player_one_winner_announcement,'FontSize',19)
+                elseif game(iii, jjj) == 2
+                    player_two_winner_announcement = title('Player Two Wins');
+                    set(player_two_winner_announcement, 'color', 'y')
+                    set(player_two_winner_announcement,'FontWeight','bold')
+                    set(player_two_winner_announcement,'FontSize',19)
                 end
                 break
             end
@@ -130,13 +149,19 @@ verticalCheck
 %% Look for a win diagonally (right to left) for Player One
     for hh = 1:4
         for tt = 1:3
-            diagonalCheckRL = DetermineWinner(game(tt, hh), game((tt+1), (hh+1)), game((tt+2), (hh+2)), game((tt+3), (hh+3)));
-            if diagonalCheckRL == 3
+            minidiagonalCheckRL = DetermineWinner(game(tt, hh), game((tt+1), (hh+1)), game((tt+2), (hh+2)), game((tt+3), (hh+3)));
+            if minidiagonalCheckRL == 3
+                diagonalCheckLR = 3;
                 if game(tt, hh) == 1
                     player_one_winner_announcement = title('Player One Wins');
                     set(player_one_winner_announcement, 'color', 'm')
                     set(player_one_winner_announcement,'FontWeight','bold')
                     set(player_one_winner_announcement,'FontSize',19)
+                elseif game(tt,hh) == 2
+                    player_two_winner_announcement = title('Player Two Wins');
+                    set(player_two_winner_announcement, 'color', 'm')
+                    set(player_two_winner_announcement,'FontWeight','bold')
+                    set(player_two_winner_announcement,'FontSize',19)
                 end
                 break
             end
@@ -153,134 +178,15 @@ verticalCheck
 %% Look for a win diagonally (left to right) for Player One
     for hhh = 7:-1:4
         for ttt = 1:3
-            diagonalCheckLR = DetermineWinner(game(ttt, hhh), game((ttt+1), (hhh-1)), game((ttt+2), (hhh-2)), game((ttt+3), (hhh-3)));
-            if diagonalCheckLR == 3
+            minidiagonalCheckLR = DetermineWinner(game(ttt, hhh), game((ttt+1), (hhh-1)), game((ttt+2), (hhh-2)), game((ttt+3), (hhh-3)));
+            if minidiagonalCheckLR == 3
+                diagonalCheckLR = 3;
                 if game(ttt, hhh) == 1
                     player_one_winner_announcement = title('Player One Wins');
                     set(player_one_winner_announcement, 'color', 'm')
                     set(player_one_winner_announcement,'FontWeight','bold')
                     set(player_one_winner_announcement,'FontSize',19)
-                end
-                break
-            end
-        end
-        if diagonalCheckLR == 3
-            break
-        end
-    end
-%two nested for loops that iterate to check for a diagonal win left to
-%right
-%iterating through rows backwards from 7:4 and columns 1:3 looking for a match diagonally
-%where there are four chips in a row from player one
-
-%% End of Player One Turn
-if (horizontalCheck ~= 0) || (verticalCheck ~= 0) || (diagonalCheckRL ~= 0) || (diagonalCheckLR ~= 0)
-end
-%if any one of the four checks is not zero, it means that that check has
-%been fulfilled and Player One has won the game, so the game ends
-
-%% Player Two Turn
-    [x, ~] = ginput(1);
-    turn = turn-1;
-    row = 1;
-    while row+1 <= 6
-        if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2  
-%selecting the column using a click, ceil rounds the click location to the
-%nearest whole integer which determines the column that the click is
-%associated with
-%if == 1 or 2, indicates that the bottom row is not occupied, so chip goes
-%in that slot
-            row_click = row;
-            break
-        elseif row <= 6
-            row_click = row + 1;
-%this suggests that the selected slot is occupied so the chip will have to
-%go in the slot above (row+1)
-        end
-        row = row+1;
-    end
-    game(row_click, ceil(x)) = 2;
-   [dx, dy] = disp_chip(row_click, ceil(x));
-    player_one_chip = text(dx+0.5, dy+0.5, '2', ...
-        'fontsize', 20, 'horizontalalignment', 'center');
-    set(player_one_chip, 'color', 'y')
-%the above code creates the player two chip (which is yellow)
-
-%% Look for win by rows for Player Two
-    for ii = 1:6
-        for jj = 1:4
-            horizontalcheck = DetermineWinner(game(ii, jj), game(ii, (jj+1)), game(ii, (jj+2)), game(ii, (jj+3)));
-            if horizontalcheck == 3
-                if game(ii, jj) == 2
-                    player_two_winner_announcement = title('Player Two Wins');
-                    set(player_two_winner_announcement, 'color', 'y')
-                    set(player_two_winner_announcement,'FontWeight','bold')
-                    set(player_two_winner_announcement,'FontSize',19)
-                end
-                break
-            end
-        end
-        if horizontalcheck == 3
-            break
-            
-        end
- 
-    end
-%two nested for loops that iterate to check for a horizontal win
-%iterating through rows 1:6 and columns 1:4 looking for a match between rows where
-%there are four chips in a row from player two
-
-%% Look for win by columns for Player Two
-    for jjj = 1:7
-        for iii = 1:3
-            verticalCheck = DetermineWinner(game(iii, jjj), game((iii+1), jjj), game((iii+2), jjj), game((iii+3), jjj));
-            if verticalCheck == 3
-                if game(iii, jjj) == 2
-                    player_two_winner_announcement = title('Player Two Wins');
-                    set(player_two_winner_announcement, 'color', 'y')
-                    set(player_two_winner_announcement,'FontWeight','bold')
-                    set(player_two_winner_announcement,'FontSize',19)
-                end
-                break
-            end
-        end
-        if verticalCheck == 3
-            break
-        end
-    end
-%two nested for loops that iterate to check for a vertical win
-%iterating through columns 1:7 and rows 1:3 looking for a match between columns where
-%there are four chips in a row from player two
-
-%% Look for a win diagonally (right to left) for Player Two
-    for hh = 1:4
-        for tt = 1:3
-            diagonalCheckRL = DetermineWinner(game(tt, hh), game((tt+1), (hh+1)), game((tt+2), (hh+2)), game((tt+3), (hh+3)));
-            if diagonalCheckRL == 3
-                if game(tt, hh) == 2
-                    player_two_winner_announcement = title('Player Two Wins');
-                    set(player_two_winner_announcement, 'color', 'y')
-                    set(player_two_winner_announcement,'FontWeight','bold')
-                    set(player_two_winner_announcement,'FontSize',19)
-                end
-                break
-            end
-        end
-        if diagonalCheckRL == 3
-            break
-        end
-    end
-%two nested for loops that iterate to check for a diagonal win right to
-%left
-%iterating through rows 1:4 and columns 1:3 looking for a match diagonally
-%where there are four chips in a row from player two
-
-%% Look for a win diagonally (left to right) for Player Two
-    for hhh = 7:-1:4
-        for ttt = 1:3
-            diagonalCheckLR = DetermineWinner(game(ttt, hhh), game((ttt+1), (hhh-1)), game((ttt+2), (hhh-2)), game((ttt+3), (hhh-3)));
-            if diagonalCheckLR == 3
-                if game(ttt, hhh) == 2
+                elseif game(ttt, hhh) == 2
                     player_two_winner_announcement = title('Player Two Wins');
                     set(player_two_winner_announcement, 'color', 'y')
                     set(player_two_winner_announcement,'FontWeight','bold')
@@ -293,24 +199,15 @@ end
             break
         end
     end
-%two nested for loops that iterate to check for a diagonal win left to
-%right
-%iterating through rows backwards from 7:4 and columns 1:3 looking for a match diagonally
-%where there are four chips in a row from player two
 
-%% End of Player Two Turn
-if (horizontalCheck ~= 0) || (verticalCheck ~= 0) || (diagonalCheckRL ~= 0) || (diagonalCheckLR ~= 0)
+if whos_turn==1
+    whos_turn=2;
+elseif whos_turn==2
+    whos_turn=1;
 end
+%this if statement allows the player turns to switch off within each of the for
+%loops
 
-%the function check takes in four inputs (b1, b2, b3, and b4) which are the
-%four different winning possibiliiters (rows, columns, right-left,
-%left-right) and produces an output, q which is the end of the game
-%if q=3, someone won the game --> if q=0, no one won the game. The if
-%statement above says that if any one of the four winning conditions is
-%satisfied by either a one or a two (player one or player two), that player
-%respectivley has won and q=3. If not, there is no winner and q=0
-%if any one of the four checks is not zero, it means that that check has
-%been fulfilled and Player Two has won the game, so the game ends
 end
 end
 

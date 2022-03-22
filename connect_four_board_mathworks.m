@@ -86,7 +86,7 @@ diagonalCheckLR
     player_one_chip = text(dx+0.5, dy+0.5, num2str(whos_turn), ...
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', player_color{whos_turn})
-%the above code creates the player one chip (which is pink)
+%the above code creates the chips for the players
 
 %% Look for win by rows for Player One
     for ii = 1:6
@@ -114,9 +114,10 @@ diagonalCheckLR
         end
  
     end
-%two nested for loops that iterate to check for a horizontal win
+%two nested for loops that iterate to check for a horizontal win from
+%either player
 %iterating through rows 1:6 and columns 1:4 looking for a match between rows where
-%there are four chips in a row from player one
+%there are four chips in a row from either player
 
 %% Look for win by columns for Player One
     for jjj = 1:7
@@ -142,9 +143,10 @@ diagonalCheckLR
             break
         end
     end
-%two nested for loops that iterate to check for a vertical win
+%two nested for loops that iterate to check for a vertical win from both
+%players
 %iterating through columns 1:7 and rows 1:3 looking for a match between columns where
-%there are four chips in a row from player one
+%there are four chips in a row from either player
 
 %% Look for a win diagonally (right to left) for Player One
     for hh = 1:4
@@ -171,9 +173,9 @@ diagonalCheckLR
         end
     end
 %two nested for loops that iterate to check for a diagonal win right to
-%left
+%left for both player one and player two 
 %iterating through rows 1:4 and columns 1:3 looking for a match diagonally
-%where there are four chips in a row from player one
+%where there are four chips in a row from a player
 
 %% Look for a win diagonally (left to right) for Player One
     for hhh = 7:-1:4
@@ -200,22 +202,13 @@ diagonalCheckLR
         end
     end
 
-%the function check takes in four inputs (b1, b2, b3, and b4) which are the
-%four different winning possibiliiters (rows, columns, right-left,
-%left-right) and produces an output, q which is the end of the game
-%if q=3, someone won the game --> if q=0, no one won the game. The if
-%statement above says that if any one of the four winning conditions is
-%satisfied by either a one or a two (player one or player two), that player
-%respectivley has won and q=3. If not, there is no winner and q=0
-%if any one of the four checks is not zero, it means that that check has
-%been fulfilled and Player Two has won the game, so the game ends
-
 if whos_turn==1
     whos_turn=2;
 elseif whos_turn==2
     whos_turn=1;
 end
-
+%this if statement allows the player turns to switch off within each of the for
+%loops
 
 end
 end
