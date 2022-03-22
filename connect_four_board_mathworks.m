@@ -61,7 +61,7 @@ diagonalCheckLR
 
     [x, ~] = ginput(1);
     turn = turn-1;
-    row = 1;
+    row = 0;
     while row+1 <= 6
         if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2 
 %selecting the column using a click, ceil rounds the click location to the
