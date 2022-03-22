@@ -34,6 +34,7 @@ instructions = title('select your chip placement by clicking the top of your cho
     set(instructions,'FontSize',15)
 
 %setting title for board with instructions on how to play
+%- driver Ashley, observer Sophie and Jess
 
 %% Defining Variables and Setting Game Parameters
 
@@ -54,6 +55,7 @@ diagonalCheckLR
 %checking for wins and playing the game
 %using while statement to establish when the game should be played or not
 % (when there is no win and there are turns left [maximum 42 turns permitted])
+%- driver Sophie, observer Ashley
 
 %% Player One Turn
 
@@ -82,6 +84,7 @@ diagonalCheckLR
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', 'm')
 %the above code creates the player one chip (which is pink)
+%- driver Ashley and Sophie, obeserver/debugger Jess
 
 %% Look for win by rows for Player One
     for ii = 1:6
@@ -106,6 +109,7 @@ diagonalCheckLR
 %two nested for loops that iterate to check for a horizontal win
 %iterating through rows 1:6 and columns 1:4 looking for a match between rows where
 %there are four chips in a row from player one
+%- driver Ashley and Sophie, obeserver/debugger Jess
 
 %% Look for win by columns for Player One
     for jjj = 1:7
@@ -128,6 +132,7 @@ diagonalCheckLR
 %two nested for loops that iterate to check for a vertical win
 %iterating through columns 1:7 and rows 1:3 looking for a match between columns where
 %there are four chips in a row from player one
+%- driver Ashley, observer/debugger Sophie and Jess
 
 %% Look for a win diagonally (right to left) for Player One
     for hh = 1:4
@@ -151,6 +156,7 @@ diagonalCheckLR
 %left
 %iterating through rows 1:4 and columns 1:3 looking for a match diagonally
 %where there are four chips in a row from player one
+%- driver Ashley, observer/debugger Sophie and Jess
 
 %% Look for a win diagonally (left to right) for Player One
     for hhh = 7:-1:4
@@ -174,6 +180,7 @@ diagonalCheckLR
 %right
 %iterating through rows backwards from 7:4 and columns 1:3 looking for a match diagonally
 %where there are four chips in a row from player one
+%- driver Ashley, observer/debugger Sophie and Jess
 
 %% End of Player One Turn
 if (horizontalCheck ~= 0) || (verticalCheck ~= 0) || (diagonalCheckRL ~= 0) || (diagonalCheckLR ~= 0)
@@ -207,6 +214,7 @@ end
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', 'y')
 %the above code creates the player two chip (which is yellow)
+%- driver Ashley, observer/debugger Sophie and Jess
 
 %% Look for win by rows for Player Two
     for ii = 1:6
@@ -231,6 +239,7 @@ end
 %two nested for loops that iterate to check for a horizontal win
 %iterating through rows 1:6 and columns 1:4 looking for a match between rows where
 %there are four chips in a row from player two
+%- driver Ashley, observer/debugger Sophie and Jess
 
 %% Look for win by columns for Player Two
     for jjj = 1:7
@@ -253,6 +262,7 @@ end
 %two nested for loops that iterate to check for a vertical win
 %iterating through columns 1:7 and rows 1:3 looking for a match between columns where
 %there are four chips in a row from player two
+%- driver Ashley, observer/debugger Sophie and Jess
 
 %% Look for a win diagonally (right to left) for Player Two
     for hh = 1:4
@@ -276,6 +286,7 @@ end
 %left
 %iterating through rows 1:4 and columns 1:3 looking for a match diagonally
 %where there are four chips in a row from player two
+%- driver Ashley, observer/debugger Sophie and Jess
 
 %% Look for a win diagonally (left to right) for Player Two
     for hhh = 7:-1:4
@@ -299,6 +310,7 @@ end
 %right
 %iterating through rows backwards from 7:4 and columns 1:3 looking for a match diagonally
 %where there are four chips in a row from player two
+%- driver Ashley, observer/debugger Sophie and Jess
 
 %% End of Player Two Turn
 if (horizontalCheck ~= 0) || (verticalCheck ~= 0) || (diagonalCheckRL ~= 0) || (diagonalCheckLR ~= 0)
@@ -313,6 +325,7 @@ end
 %respectivley has won and q=3. If not, there is no winner and q=0
 %if any one of the four checks is not zero, it means that that check has
 %been fulfilled and Player Two has won the game, so the game ends
+%- driver Ashley, observer/debugger Sophie and Jess
 end
 end
 
@@ -410,6 +423,7 @@ function [dx, dy] = disp_chip(row, column) %To display the recent move.
             dx = 6; dy = 5;
         end
 end
+%- driver Ashley, observer/debugger Sophie and Jess
 
 %% Function that defines check function used previously to determine wins  
 function [winner] = DetermineWinner(HorizontalInput, VerticalInput, DiagonalInputLR, DiagonalInputRL)
@@ -428,3 +442,4 @@ function [winner] = DetermineWinner(HorizontalInput, VerticalInput, DiagonalInpu
 % %statement above says that if any one of the four winning conditions is
 % %satisfied by either a one or a two (player one or player two), that player
 % %respectivley has won and q=3. If not, there is no winner and q=0
+%- driver Ashley and Sophie observer/debugger Jess
