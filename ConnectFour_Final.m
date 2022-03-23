@@ -61,6 +61,7 @@ diagonalCheckLR
 % (when there is no win and there are turns left [maximum 42 turns permitted])
 
 %% Player One Turn
+
     [x, ~] = ginput(1);
     turn = turn-1;
     row = 1;
@@ -75,14 +76,13 @@ diagonalCheckLR
             break
         elseif row <= 6
             row_click = row + 1;
-        end
 %this suggests that the selected slot is occupied so the chip will have to
 %go in the slot above (row+1)
 %this is where we should add in if statement to stop the chips at the top
 %of a column (i think)
         end
         row = row+1;
-    
+    end
     game(row_click, ceil(x)) = whos_turn;
    [dx, dy] = disp_chip(row_click, ceil(x));
     player_one_chip = text(dx+0.5, dy+0.5, num2str(whos_turn), ...
