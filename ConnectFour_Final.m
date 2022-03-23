@@ -44,9 +44,10 @@ diagonalCheckRL = 0; % checks for diagonal winner (right to left)
 diagonalCheckLR = 0; % checks for diagonal winner (left to right)
 row_click= 0; % row select for 'game' matrix
 turn = 42; % max turns that can be played 
-whos_turn = 1;
+whos_turn = 1; % alternates between players
 
-player_color = {'r';'y'};
+
+player_color = {'m';'y'};
 
 
 while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonalCheckLR == 0)  && (diagonalCheckRL == 0)
@@ -60,12 +61,12 @@ diagonalCheckLR
 %using while statement to establish when the game should be played or not
 % (when there is no win and there are turns left [maximum 42 turns permitted])
 
-%% Player One Turn
+%% Player One and Two Turn
 
     [x, ~] = ginput(1);
     turn = turn-1;
     row = 1;
-    while row+1 <= 6
+    while row + 1 <= 6
         if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2 
 %selecting the column using a click, ceil rounds the click location to the
 %nearest whole integer which determines the column that the click is
@@ -80,8 +81,10 @@ diagonalCheckLR
 %go in the slot above (row+1)
 %this is where we should add in if statement to stop the chips at the top
 %of a column (i think)
+
+% put the if loop outside, if full then break if not full do row +1
         end
-        row = row+1;
+          row = row+1;
     end
     game(row_click, ceil(x)) = whos_turn;
    [dx, dy] = disp_chip(row_click, ceil(x));
@@ -101,7 +104,7 @@ diagonalCheckLR
                     set(player_one_winner_announcement, 'color', 'm')
                     set(player_one_winner_announcement,'FontWeight','bold')
                     set(player_one_winner_announcement,'FontSize',19)
-                elseif game(ii, jj) == 2
+                elseif game(ii, jj) == 2 %PLAYER TWO TURN %
                     player_two_winner_announcement = title('Player Two Wins');
                     set(player_two_winner_announcement, 'color', 'y')
                     set(player_two_winner_announcement,'FontWeight','bold')
