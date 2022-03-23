@@ -46,7 +46,7 @@ row_click= 0; % row select for 'game' matrix
 turn = 42; % max turns that can be played 
 whos_turn = 1;
 
-player_color = {'r';'y'};
+player_color = {'m';'y'};
 
 
 while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonalCheckLR == 0)  && (diagonalCheckRL == 0)
