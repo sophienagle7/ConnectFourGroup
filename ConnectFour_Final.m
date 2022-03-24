@@ -60,13 +60,14 @@ diagonalCheckLR
 %using while statement to establish when the game should be played or not
 % (when there is no win and there are turns left [maximum 42 turns permitted])
 
-%% Player One Turn
+%% Player One and Two Turn
 
     [x, ~] = ginput(1);
     turn = turn-1;
     row = 1;
     while row+1 <= 6
-        if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2 
+        if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2 && game((row),ceil(x))== 0
+            
 %selecting the column using a click, ceil rounds the click location to the
 %nearest whole integer which determines the column that the click is
 %associated with
@@ -83,12 +84,15 @@ diagonalCheckLR
         end
         row = row+1;
     end
-    game(row_click, ceil(x)) = whos_turn;
-   [dx, dy] = disp_chip(row_click, ceil(x));
-    player_one_chip = text(dx+0.5, dy+0.5, num2str(whos_turn), ...
+    if game(row_click, ceil(x))==0    
+        game(row_click, ceil(x)) = whos_turn;
+        [dx, dy] = disp_chip(row_click, ceil(x));
+        player_one_chip = text(dx+0.5, dy+0.5, num2str(whos_turn), ...
         'fontsize', 20, 'horizontalalignment', 'center');
-    set(player_one_chip, 'color', player_color{whos_turn})
+        set(player_one_chip, 'color', player_color{whos_turn})
 %the above code creates the chips for the players
+    end 
+   
 
 %% Look for win by rows for Player One
     for ii = 1:6
