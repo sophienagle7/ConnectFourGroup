@@ -44,53 +44,77 @@ diagonalCheckRL = 0; % checks for diagonal winner (right to left)
 diagonalCheckLR = 0; % checks for diagonal winner (left to right)
 row_click= 0; % row select for 'game' matrix
 turn = 42; % max turns that can be played 
-whos_turn = 1; % alternates between players
-row_full = row + 5;
+whos_turn = 1;
 
 player_color = {'m';'y'};
 
 
-while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonalCheckLR == 0)  && (diagonalCheckRL == 0)
-turn
-horizontalCheck
-verticalCheck
-diagonalCheckRL
-diagonalCheckLR
+while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonalCheckLR == 0) && (diagonalCheckRL == 0)
+%turn
+%horizontalCheck
+%verticalCheck
+%diagonalCheckRL
+%diagonalCheckLR
 %creating gameboard and setting variables that will be used later when
 %checking for wins and playing the game
 %using while statement to establish when the game should be played or not
 % (when there is no win and there are turns left [maximum 42 turns permitted])
+%% %% Check to see if columns are full
+    for yv = 1:7 % yv = y variable (columns)
+        for xv = 1:3 % xv = x variable (rows)
+            miniverticalCheck = column_full(game(xv, yv), game((xv+1), yv), game((xv+2), yv), game((xv+3), yv));
+            if miniverticalCheck == 3
+                verticalCheck = 3;
+                if game(xv, yv) == 1 || game(xv, yv) == 2
+                    player_error_announcement = title('This Column is full');
+                    set(player_error_announcement, 'color', 'w')
+                    set(player_error_announcement,'FontWeight','bold')
+                    set(player_error_announcement,'FontSize',19)
+                    break
+                end
+                break
+            end
+        end
+        if verticalCheck == 3
+            break
+        end
+    end
+%two nested for loops that iterate to check for a vertical check from both
+%players
+%iterating through columns (y_variables) 1:7 and rows (x_variables) 1:3 looking for a match between columns where
+%there are four chips in a row from either player
 
-%% Player One and Two Turn
+%% Player One Turn
 
     [x, ~] = ginput(1);
     turn = turn-1;
     row = 1;
-    while row_full
-        if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2 
+if column_full = 0
+        while row+1 <= 6
+            if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2 
 %selecting the column using a click, ceil rounds the click location to the
 %nearest whole integer which determines the column that the click is
 %associated with
 %if == 1 or 2, indicates that the bottom row is not occupied, so chip goes
 %in that slot
-            row_click = row;
-            break
-        elseif row <= 6
-            row_click = row + 1;
+                row_click = row;
+                break
+            elseif row <= 6
+                row_click = row + 1;
 %this suggests that the selected slot is occupied so the chip will have to
 %go in the slot above (row+1)
 %this is where we should add in if statement to stop the chips at the top
 %of a column (i think)
-
-% put the if loop outside, if full then break if not full do row +1
+            end
+            row = row+1;
         end
-          row = row+1;
     end
     game(row_click, ceil(x)) = whos_turn;
    [dx, dy] = disp_chip(row_click, ceil(x));
     player_one_chip = text(dx+0.5, dy+0.5, num2str(whos_turn), ...
         'fontsize', 20, 'horizontalalignment', 'center');
     set(player_one_chip, 'color', player_color{whos_turn})
+    
 %the above code creates the chips for the players
 
 %% Look for win by rows for Player One
@@ -104,7 +128,7 @@ diagonalCheckLR
                     set(player_one_winner_announcement, 'color', 'm')
                     set(player_one_winner_announcement,'FontWeight','bold')
                     set(player_one_winner_announcement,'FontSize',19)
-                elseif game(ii, jj) == 2 %PLAYER TWO TURN %
+                elseif game(ii, jj) == 2
                     player_two_winner_announcement = title('Player Two Wins');
                     set(player_two_winner_announcement, 'color', 'y')
                     set(player_two_winner_announcement,'FontWeight','bold')
@@ -330,3 +354,24 @@ function [winner] = DetermineWinner(HorizontalInput, VerticalInput, DiagonalInpu
 % %statement above says that if any one of the four winning conditions is
 % %satisfied by either a one or a two (player one or player two), that player
 % %respectivley has won and q=3. If not, there is no winner and q=0
+%% function to check if column is full (called in line 62 for now)
+function [full] = column_full(VerticalInput)
+    if (HorizontalInput == 1 && VerticalInput == 1) || (HorizontalInput == 2 && VerticalInput == 2)
+        full = 3
+        return
+    else
+        full = 0
+        return
+    end
+end
+
+%the function check takes in two inputs which are two out of four
+% different winning possibiliiters (rows, columns)
+% and produces an output, full which is the end of the ability to play game
+% %if q=3, column is full --> if q=0, column is not full. The if
+% %statement above says that if any one of the two full conditions is
+% %satisfied by either a one or a two (player one or player two), then the
+% column is full. If they are not satisfied, it is not full and q=0
+
+
+
