@@ -1,5 +1,5 @@
 # ConnectFourGroup
-Hi! Our Names are Ashley, Sophie and Jess. For our group project we decided to use Matlab to create a two-player game of connect four. 
+Hi! Our Names are Ashley, Sophie, and Jess. For our group project we decided to use Matlab to create a two-player game of connect four. 
 
 To play the game, you must have two players, both of which will share the same computer. The turns alternate until the board is full or there is a winner. A player becomes a winner if they place four chips in a row, either horizontally, vertically, or diagonally from left to right or right to left.
 - Player one is magenta, and their chip is a magenta colored "1".
