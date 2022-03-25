@@ -10,3 +10,6 @@ The four can be diagonally, horizontally or vertically
 
 When a player has reached four in a row the computer will display "Player X wins!"
 If no player reaches four in a row and the board is full the computer will display "Draw, restart new game"
+
+
+https://user-images.githubusercontent.com/101124800/160033652-f3c61deb-edee-4605-aaf8-e9bd554b7906.mp4
