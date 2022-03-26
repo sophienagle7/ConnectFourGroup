@@ -44,9 +44,9 @@ diagonalCheckRL = 0; % checks for diagonal winner (right to left)
 diagonalCheckLR = 0; % checks for diagonal winner (left to right)
 row_click= 0; % row select for 'game' matrix
 turn = 42; % max turns that can be played 
-whos_turn = 1;
+whos_turn = 1; %alternates betweem player one and player two
 
-player_color = {'m';'y'};
+player_color = {'m';'y'}; %sets chip color to magenta and yellow
 
 
 while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonalCheckLR == 0)  && (diagonalCheckRL == 0)
@@ -58,11 +58,11 @@ diagonalCheckLR
 %creating gameboard and setting variables that will be used later when
 %checking for wins and playing the game
 %using while statement to establish when the game should be played or not
-% (when there is no win and there are turns left [maximum 42 turns permitted])
+%(when there is no win and there are turns left [maximum 42 turns permitted])
 
-%% Player One and Two Turn
+%% Players One and Two Turn
 
-    [x, ~] = ginput(1);
+    [x, ~] = ginput(1); %controls the click function to determine where chip is placed
     turn = turn-1;
     row = 1;
     while row+1 <= 6
@@ -79,8 +79,6 @@ diagonalCheckLR
             row_click = row + 1;
 %this suggests that the selected slot is occupied so the chip will have to
 %go in the slot above (row+1)
-%this is where we should add in if statement to stop the chips at the top
-%of a column (i think)
         end
         row = row+1;
     end
@@ -94,7 +92,7 @@ diagonalCheckLR
     end 
    
 
-%% Look for win by rows for Player One
+%% Look for win by rows for Players One and Two
     for ii = 1:6
         for jj = 1:4
             minihorizontalcheck = DetermineWinner(game(ii, jj), game(ii, (jj+1)), game(ii, (jj+2)), game(ii, (jj+3)));
@@ -125,7 +123,7 @@ diagonalCheckLR
 %iterating through rows 1:6 and columns 1:4 looking for a match between rows where
 %there are four chips in a row from either player
 
-%% Look for win by columns for Player One
+%% Look for win by columns for Players One and Two
     for jjj = 1:7
         for iii = 1:3
             miniverticalCheck = DetermineWinner(game(iii, jjj), game((iii+1), jjj), game((iii+2), jjj), game((iii+3), jjj));
@@ -154,7 +152,7 @@ diagonalCheckLR
 %iterating through columns 1:7 and rows 1:3 looking for a match between columns where
 %there are four chips in a row from either player
 
-%% Look for a win diagonally (right to left) for Player One
+%% Look for a win diagonally (right to left) for Players One and Two
     for hh = 1:4
         for tt = 1:3
             minidiagonalCheckRL = DetermineWinner(game(tt, hh), game((tt+1), (hh+1)), game((tt+2), (hh+2)), game((tt+3), (hh+3)));
@@ -183,7 +181,7 @@ diagonalCheckLR
 %iterating through rows 1:4 and columns 1:3 looking for a match diagonally
 %where there are four chips in a row from a player
 
-%% Look for a win diagonally (left to right) for Player One
+%% Look for a win diagonally (left to right) for Players One and Two
     for hhh = 7:-1:4
         for ttt = 1:3
             minidiagonalCheckLR = DetermineWinner(game(ttt, hhh), game((ttt+1), (hhh-1)), game((ttt+2), (hhh-2)), game((ttt+3), (hhh-3)));
@@ -208,18 +206,24 @@ diagonalCheckLR
         end
     end
 
+%two nested for loops that iterate to check for a diagonal win left to
+%right for both player one and player two 
+%iterating through rows 7:4 and columns 1:3 looking for a match diagonally
+%where there are four chips in a row from a player
+  
+%% Switching Turns
 if whos_turn==1
     whos_turn=2;
 elseif whos_turn==2
     whos_turn=1;
 end
 %this if statement allows the player turns to switch off within each of the for
-%loops
+%loops (if player one is going, the next turn will be player two)
 
 end
 end
 
-%% NEW SECTION  -- UNDERSTAND BETTER AND WORK WITH 
+%% Displays Chips 
 function [dx, dy] = disp_chip(row, column) %To display the recent move.
                % for row 6
         if row == 6 && column == 1
@@ -314,6 +318,9 @@ function [dx, dy] = disp_chip(row, column) %To display the recent move.
         end
 end
 
+%this section of code uses if/elseif statements to display the chips in
+%their appropriate locations
+
 %% Function that defines check function used previously to determine wins  
 function [winner] = DetermineWinner(HorizontalInput, VerticalInput, DiagonalInputLR, DiagonalInputRL)
          if (HorizontalInput == 1 && VerticalInput == 1 && DiagonalInputLR == 1 && DiagonalInputRL == 1) || (HorizontalInput == 2 && VerticalInput == 2 && DiagonalInputLR == 2 && DiagonalInputRL == 2)
@@ -324,10 +331,11 @@ function [winner] = DetermineWinner(HorizontalInput, VerticalInput, DiagonalInpu
              return
          end
  end
-% %the function check takes in four inputs (b1, b2, b3, and b4) which are the
-% %four different winning possibiliiters (rows, columns, right-left,
-% %left-right) and produces an output, q which is the end of the game
-% %if q=3, someone won the game --> if q=0, no one won the game. The if
-% %statement above says that if any one of the four winning conditions is
-% %satisfied by either a one or a two (player one or player two), that player
-% %respectivley has won and q=3. If not, there is no winner and q=0
+% the function check takes in four inputs (HorizontalInput, VerticalInput, 
+% DiagonalInputLR, DiagonalInputRL) which are the four different winning 
+% possibiliiters (by rows, columns, right-left,left-right) and produces an output, 
+% "winner" which is the end of the game if winner=3, someone won the game --> if winner=0, 
+% no one won the game. The if statement above says that if any one of the four winning 
+% conditions is satisfied by either a one or a two (player one or player two), 
+% that player has won and winner=3. If not, there is no winner and
+% winner=0.
