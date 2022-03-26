@@ -34,6 +34,7 @@ instructions = title('select your chip placement by clicking the top of your cho
     set(instructions,'FontSize',15)
 
 %setting title for board with instructions on how to play
+%driver: ashley debuggers: jess and sophie
 
 %% Defining Variables and Setting Game Parameters
 
@@ -59,6 +60,8 @@ diagonalCheckLR
 %checking for wins and playing the game
 %using while statement to establish when the game should be played or not
 %(when there is no win and there are turns left [maximum 42 turns permitted])
+
+%driver: ashley debugger: jess and sophie
 
 %% Players One and Two Turn
 
@@ -90,7 +93,8 @@ diagonalCheckLR
         set(player_one_chip, 'color', player_color{whos_turn})
 %the above code creates the chips for the players
     end 
-   
+
+%drivers and debuggers: ashley, sophie, and jess
 
 %% Look for win by rows for Players One and Two
     for ii = 1:6
@@ -123,6 +127,8 @@ diagonalCheckLR
 %iterating through rows 1:6 and columns 1:4 looking for a match between rows where
 %there are four chips in a row from either player
 
+%driver: sophie debuggers: ashley and jess
+
 %% Look for win by columns for Players One and Two
     for jjj = 1:7
         for iii = 1:3
@@ -151,6 +157,8 @@ diagonalCheckLR
 %players
 %iterating through columns 1:7 and rows 1:3 looking for a match between columns where
 %there are four chips in a row from either player
+
+%driver: sophie debuggers: ashley and jess
 
 %% Look for a win diagonally (right to left) for Players One and Two
     for hh = 1:4
@@ -181,6 +189,8 @@ diagonalCheckLR
 %iterating through rows 1:4 and columns 1:3 looking for a match diagonally
 %where there are four chips in a row from a player
 
+%driver: jess debuggers: ashley and sophie
+
 %% Look for a win diagonally (left to right) for Players One and Two
     for hhh = 7:-1:4
         for ttt = 1:3
@@ -210,6 +220,8 @@ diagonalCheckLR
 %right for both player one and player two 
 %iterating through rows 7:4 and columns 1:3 looking for a match diagonally
 %where there are four chips in a row from a player
+
+%driver: jess debuggers: ashley and sophie
   
 %% Switching Turns
 if whos_turn==1
@@ -219,6 +231,8 @@ elseif whos_turn==2
 end
 %this if statement allows the player turns to switch off within each of the for
 %loops (if player one is going, the next turn will be player two)
+
+%drivers and debuggers: ashley, jess, sophie
 
 end
 end
@@ -321,6 +335,8 @@ end
 %this section of code uses if/elseif statements to display the chips in
 %their appropriate locations
 
+%drivers and debuggers: ashley, jess, sophie
+
 %% Function that defines check function used previously to determine wins  
 function [winner] = DetermineWinner(HorizontalInput, VerticalInput, DiagonalInputLR, DiagonalInputRL)
          if (HorizontalInput == 1 && VerticalInput == 1 && DiagonalInputLR == 1 && DiagonalInputRL == 1) || (HorizontalInput == 2 && VerticalInput == 2 && DiagonalInputLR == 2 && DiagonalInputRL == 2)
@@ -339,3 +355,5 @@ function [winner] = DetermineWinner(HorizontalInput, VerticalInput, DiagonalInpu
 % conditions is satisfied by either a one or a two (player one or player two), 
 % that player has won and winner=3. If not, there is no winner and
 % winner=0.
+
+%drivers and debuggers: ashley, jess, sophie
