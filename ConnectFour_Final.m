@@ -1,4 +1,4 @@
-function connect_four_output = connect_four_board_mathworks()
+function connect_four_output = ConnectFour_Final()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Constructing Board
@@ -19,9 +19,13 @@ column_5x = [5, 5]; column_5y = [0, 6];
 column_6x = [6, 6]; column_6y = [0, 6];
 column_7x = [7, 7]; column_7y = [0, 6];
 clf
-plot(row_0x, row_0y, 'b', row_1x, row_1y, 'b', row_2x, row_2y, 'b', row_3x, row_3y, 'b', row_4x, row_4y, 'b', row_5x, row_5y, 'b', row_6x, row_6y, 'b', ...
-    column_0x, column_0y, 'b', column_1x, column_1y, 'b', column_2x, column_2y, 'b', column_3x, column_3y, 'b', column_4x, column_4y, 'b', column_5x, column_5y, 'b', column_6x, column_6y, 'b', ...
-    column_7x, column_7y, 'b')
+plot(row_0x, row_0y, 'b', row_1x, row_1y, 'b', row_2x, ...
+    row_2y, 'b', row_3x, row_3y, 'b', row_4x, row_4y, 'b', ...
+    row_5x, row_5y, 'b', row_6x, row_6y, 'b', ...
+    column_0x, column_0y, 'b', column_1x, column_1y, ...
+    'b', column_2x, column_2y, 'b', column_3x, column_3y, 'b', ...
+    column_4x, column_4y, 'b', column_5x, column_5y, 'b', ...
+    column_6x, column_6y, 'b', column_7x, column_7y, 'b')
 axis off, axis square, ...
      set(gcf, 'color', [0.20000 0.7450 0.9220])
 
@@ -49,12 +53,13 @@ whos_turn = 1; %alternates betweem player one and player two
 player_color = {'m';'y'}; %sets chip color to magenta and yellow
 
 
-while (turn ~= 0) && (horizontalCheck == 0) && (verticalCheck == 0) && (diagonalCheckLR == 0)  && (diagonalCheckRL == 0)
-turn
-horizontalCheck
-verticalCheck
-diagonalCheckRL
-diagonalCheckLR
+while (turn ~= 0) && (horizontalCheck == 0) && ...
+        (verticalCheck == 0) && (diagonalCheckLR == 0)  && (diagonalCheckRL == 0)
+% turn
+% horizontalCheck
+% verticalCheck
+% diagonalCheckRL
+% diagonalCheckLR
 %creating gameboard and setting variables that will be used later when
 %checking for wins and playing the game
 %using while statement to establish when the game should be played or not
@@ -62,8 +67,7 @@ diagonalCheckLR
 
 %% Players One and Two Turn
 
-    [x, ~] = ginput(1); %controls the click function to determine where chip is placed
-    turn = turn-1;
+    [x, ~] = myginput(1,'crosshair');  %controls the click function to determine where chip is placed
     row = 1;
     while row+1 <= 6
         if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2 && game((row),ceil(x))== 0
@@ -86,7 +90,7 @@ diagonalCheckLR
         game(row_click, ceil(x)) = whos_turn;
         [dx, dy] = disp_chip(row_click, ceil(x));
         player_one_chip = text(dx+0.5, dy+0.5, num2str(whos_turn), ...
-        'fontsize', 20, 'horizontalalignment', 'center');
+        'fontsize', 40, 'horizontalalignment', 'center');
         set(player_one_chip, 'color', player_color{whos_turn})
 %the above code creates the chips for the players
     end 
@@ -95,7 +99,8 @@ diagonalCheckLR
 %% Look for win by rows for Players One and Two
     for ii = 1:6
         for jj = 1:4
-            minihorizontalcheck = DetermineWinner(game(ii, jj), game(ii, (jj+1)), game(ii, (jj+2)), game(ii, (jj+3)));
+            minihorizontalcheck = DetermineWinner(game(ii, jj), ...
+                game(ii, (jj+1)), game(ii, (jj+2)), game(ii, (jj+3)));
             if minihorizontalcheck == 3
                 horizontalCheck = 3;
                 if game(ii, jj) == 1
@@ -126,7 +131,8 @@ diagonalCheckLR
 %% Look for win by columns for Players One and Two
     for jjj = 1:7
         for iii = 1:3
-            miniverticalCheck = DetermineWinner(game(iii, jjj), game((iii+1), jjj), game((iii+2), jjj), game((iii+3), jjj));
+            miniverticalCheck = DetermineWinner(game(iii, jjj), ...
+                game((iii+1), jjj), game((iii+2), jjj), game((iii+3), jjj));
             if miniverticalCheck == 3
                 verticalCheck = 3;
                 if game(iii, jjj) == 1
@@ -155,7 +161,9 @@ diagonalCheckLR
 %% Look for a win diagonally (right to left) for Players One and Two
     for hh = 1:4
         for tt = 1:3
-            minidiagonalCheckRL = DetermineWinner(game(tt, hh), game((tt+1), (hh+1)), game((tt+2), (hh+2)), game((tt+3), (hh+3)));
+            minidiagonalCheckRL = DetermineWinner(game(tt, hh), ...
+                game((tt+1), (hh+1)), game((tt+2), (hh+2)), ...
+                game((tt+3), (hh+3)));
             if minidiagonalCheckRL == 3
                 diagonalCheckLR = 3;
                 if game(tt, hh) == 1
@@ -184,7 +192,9 @@ diagonalCheckLR
 %% Look for a win diagonally (left to right) for Players One and Two
     for hhh = 7:-1:4
         for ttt = 1:3
-            minidiagonalCheckLR = DetermineWinner(game(ttt, hhh), game((ttt+1), (hhh-1)), game((ttt+2), (hhh-2)), game((ttt+3), (hhh-3)));
+            minidiagonalCheckLR = DetermineWinner(game(ttt, hhh), ...
+                game((ttt+1), (hhh-1)), game((ttt+2), (hhh-2)), ...
+                game((ttt+3), (hhh-3)));
             if minidiagonalCheckLR == 3
                 diagonalCheckLR = 3;
                 if game(ttt, hhh) == 1
@@ -323,7 +333,10 @@ end
 
 %% Function that defines check function used previously to determine wins  
 function [winner] = DetermineWinner(HorizontalInput, VerticalInput, DiagonalInputLR, DiagonalInputRL)
-         if (HorizontalInput == 1 && VerticalInput == 1 && DiagonalInputLR == 1 && DiagonalInputRL == 1) || (HorizontalInput == 2 && VerticalInput == 2 && DiagonalInputLR == 2 && DiagonalInputRL == 2)
+         if (HorizontalInput == 1 && VerticalInput == 1 && ...
+                 DiagonalInputLR == 1 && DiagonalInputRL == 1) ||...
+                 (HorizontalInput == 2 && VerticalInput == 2 && ...
+                 DiagonalInputLR == 2 && DiagonalInputRL == 2)
              winner = 3;
              return
          else
