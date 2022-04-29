@@ -18,7 +18,6 @@ column_4x = [4, 4]; column_4y = [0, 6];
 column_5x = [5, 5]; column_5y = [0, 6];
 column_6x = [6, 6]; column_6y = [0, 6];
 column_7x = [7, 7]; column_7y = [0, 6];
-clf
 plot(row_0x, row_0y, 'b', row_1x, row_1y, 'b', row_2x, row_2y, 'b', row_3x, row_3y, 'b', row_4x, row_4y, 'b', row_5x, row_5y, 'b', row_6x, row_6y, 'b', ...
     column_0x, column_0y, 'b', column_1x, column_1y, 'b', column_2x, column_2y, 'b', column_3x, column_3y, 'b', column_4x, column_4y, 'b', column_5x, column_5y, 'b', column_6x, column_6y, 'b', ...
     column_7x, column_7y, 'b')
@@ -66,7 +65,7 @@ diagonalCheckLR
 %% Players One and Two Turn
 
     [x, ~] = ginput(1); %controls the click function to determine where chip is placed
-    turn = turn-1;
+    figure(1)
     row = 1;
     while row+1 <= 6
         if game((row+1), ceil(x)) == 1 || game((row+1), ceil(x)) == 2 && game((row),ceil(x))== 0
