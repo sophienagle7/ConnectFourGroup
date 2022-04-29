@@ -18,6 +18,7 @@ column_4x = [4, 4]; column_4y = [0, 6];
 column_5x = [5, 5]; column_5y = [0, 6];
 column_6x = [6, 6]; column_6y = [0, 6];
 column_7x = [7, 7]; column_7y = [0, 6];
+
 clf
 plot(row_0x, row_0y, 'b', row_1x, row_1y, 'b', row_2x, ...
     row_2y, 'b', row_3x, row_3y, 'b', row_4x, row_4y, 'b', ...
@@ -706,3 +707,7 @@ function [winner] = DetermineWinner(HorizontalInput, VerticalInput, DiagonalInpu
 % conditions is satisfied by either a one or a two (player one or player two), 
 % that player has won and winner=3. If not, there is no winner and
 % winner=0.
+
+%drivers and debuggers: ashley, jess, sophie
+%comment to push
+
