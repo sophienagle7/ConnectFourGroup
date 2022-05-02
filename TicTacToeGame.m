@@ -37,9 +37,16 @@ function currentState = PlayOneRound(player, state)
         if winner
 end
 
-function [col, row] = mousePos(x, y)
-    col = floor(x);
+function [column, row] = mousePos(x, y)
+    column = floor(x);
     row = floor(y);
+    if row > 2 
+        row = 2;
+    end
+    if column >2 
+        column = 2;
+    end
+end
 
 function winner = determinewinner(GameState)
     %this goes through and states each of the possible ways a player can
@@ -70,7 +77,6 @@ function winner = determinewinner(GameState)
     end
 end
 
-%comment to push
 
 
 
