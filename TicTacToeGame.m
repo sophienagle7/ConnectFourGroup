@@ -48,6 +48,7 @@ function [column, row] = mousePos(x, y)
     end
 end
 
+
 function winner = determinewinner(GameState)
     %this goes through and states each of the possible ways a player can
     %win the game (like how we did it in connect four)
@@ -77,7 +78,7 @@ function winner = determinewinner(GameState)
     end
 end
 
-
+%comment for pushing
 
 
 
