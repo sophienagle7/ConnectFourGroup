@@ -31,11 +31,6 @@ while outcome == -1
     else
         state = turn;
         player = mod(player+ 1,2);
-        if player == 1
-            xlabel('Player X')
-        else
-            ylabel('Player O')
-        end
         outcome = won(state);
     end
 end
