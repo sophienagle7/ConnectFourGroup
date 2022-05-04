@@ -50,7 +50,7 @@ end
 function state = PlayOneRound(player, state)
 %function takes in the current player and the current state and plays the
 %game for one round
-    [x, y] = ginput(1); %mouse position on the board
+    [x, y] = myginput(1,'crosshair'); %mouse position on the board
     [col, row] = mousePos(x, y); %corresponding row and column given the current mouse position
     row = 2 - row; %tracks actual row within the state matrix
     if state(col+1, row+1) ~= -1
