@@ -87,8 +87,8 @@ function create_X(col, row)
     x = 0:1;
     xSide1 = 0:1;
     xSide2 = 1-x;
-    plot(x+col, xSide1+row)
-    plot(x+col, xSide2+row)
+    plot(x+col, xSide1+row, 'r')
+    plot(x+col, xSide2+row, 'r')
     hold off
 end
 
@@ -98,7 +98,7 @@ function create_0(col, row)
     i = 0:0.1:2*pi;
     x = cos(i)/2+0.5;
     y = sin(i)/2+0.5;
-    plot(x+col, y+row)
+    plot(x+col, y+row, 'b')
     hold off
 end
 
