@@ -9,9 +9,9 @@ set(0, 'DefaultUIControlFontSize', UIControl_FontSize_bak);
 if choice == 1
     ConnectFour_Final()
 elseif choice == 2
-    gameSetup()
+    TicTacToeGame()
 
 end
-%[x, y] = myginput(1,'crosshair'); 
+
 
 
