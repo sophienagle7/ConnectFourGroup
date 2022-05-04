@@ -1,4 +1,4 @@
-function [] = TikTakToeGame()
+function [] = TicTacToeGame()
 %sets up the tictactoe board and players/winner
 figure('Name','Tic Tac Toe Game');
     close all
