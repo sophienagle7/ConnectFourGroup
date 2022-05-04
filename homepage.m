@@ -19,7 +19,12 @@
 msg = "Choose The Game You Would Like To Play";
 opts = ["Connect Four" "Tic-Tac-Toe"];
 choice = menu(msg,opts);
+if choice == 1
+    ConnectFour_Final()
+elseif choice == 2
+    gameSetup()
 
+end
 %[x, y] = myginput(1,'crosshair'); 
 
 
