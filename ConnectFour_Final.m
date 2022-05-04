@@ -1,4 +1,4 @@
-function connect_four_output = ConnectFour_Final()
+function [] = ConnectFour_Final()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Constructing Board
