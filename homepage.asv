@@ -20,7 +20,8 @@ msg = "Choose The Game You Would Like To Play";
 opts = ["Connect Four" "Tic-Tac-Toe"];
 choice = menu(msg,opts);
 
-%[x, y] = myginput(1,'crosshair'); 
-
+[x, y] = myginput(,'crosshair'); 
+    
+    
 
 
