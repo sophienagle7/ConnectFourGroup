@@ -9,9 +9,9 @@ figure('Name','Tic Tac Toe Game');
     set(gca,'yTick',0:3)
     set(gca,'xTickLabel','')
     set(gca,'yTickLabel','')
-    %xlabel('Player: X')
+    xlabel('Player: X')
     grid on
-    set(gcf, 'color', [0.4940 0.1840 0.5560])
+    set(gcf, 'color', [0.20000 0.7450 0.9220])
 
 %settup the gameboard and the variable
 state = [[-1 -1 -1]
@@ -23,7 +23,7 @@ outcome = -1; %decides if there is a winner
 player = 1; %keeps track of who's turn it is
 
 instructions = title('select your marker placement by clicking square of your choice');
-    set(instructions, 'color', 'w')
+    set(instructions, 'color', 'black')
     set(instructions,'FontWeight','bold')
     set(instructions,'FontSize',15)
 
