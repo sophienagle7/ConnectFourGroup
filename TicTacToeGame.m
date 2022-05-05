@@ -101,7 +101,7 @@ function won = won(state)
     %this goes through and states each of the possible ways a player can
     %win the game (like how we did it in connect four)
     %Vertical Win
-    if (state(1, 1) == state(2,1) && state(1,1) == state(3,1) && state(1,1) ~= -1)
+    if (state(1, 1) == state(2,1) && state(1,1) == state(3,1) && state(3,1) ~= -1)
         won = state(1,1);
     elseif (state(1, 2) == state(2,2) && state(1,2) == state(3,2) && state(1,2) ~= -1)
         won = state(1,2);
@@ -117,8 +117,9 @@ function won = won(state)
      %Diagonal Winner
     elseif (state(1, 1) == state(2,2) && state(1,1) == state(3,3) && state(1,1) ~= -1)
         won = state(1,1);
-    elseif (state(1, 3) == state(2,2) && state(1,3) == state(3,3) && state(1,3) ~= -1)
+    elseif (state(1, 3) == state(2,2) && state(1,3) == state(3,1) && state(2,2) ~= -1)
         won = state(1,3);
+    %tie
     elseif ~ismember(state, -1)
         won = 2;
     else
