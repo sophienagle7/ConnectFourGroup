@@ -33,7 +33,7 @@ instructions = title('select your marker placement by clicking square of your ch
 while outcome == -1
     turn = PlayOneRound(player, state);
     if turn == -1 %full spot --> player needs to click again
-        title('full spot, try again');
+        title('this spot is taken, please select another');
     else
         state = turn;
         player = mod(player+ 1,2);
@@ -42,10 +42,10 @@ while outcome == -1
 end
 
 if outcome == 0 
-    title('X Wins', 'FontSize', 20)
+    title('PLayer One Wins!', 'FontSize', 20)
     xlabel('')
 elseif outcome == 1
-    title('O Wins', 'FontSize', 20)
+    title('Player Two Wins!', 'FontSize', 20)
     xlabel('')
 else
     title('Tie', 'FontSize', 20)

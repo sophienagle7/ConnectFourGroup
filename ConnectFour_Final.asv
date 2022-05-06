@@ -92,8 +92,8 @@ while (turn ~= 0) && (horizontalCheck == 0) && ...
     if game(row_click, ceil(x))==0    
         game(row_click, ceil(x)) = whos_turn;
         [dx, dy] = disp_chip(row_click, ceil(x));
-        player_one_chip = text(dx+0.5, dy+1, '.', ...
-        'fontsize', 200, 'horizontalalignment', 'center');
+        player_one_chip = text(dx+0.5, dy+0.5, num2str(whos_turn), ...
+        'fontsize', 40, 'horizontalalignment', 'center');
         set(player_one_chip, 'color', player_color{whos_turn})
 %the above code creates the chips for the players
     end 
