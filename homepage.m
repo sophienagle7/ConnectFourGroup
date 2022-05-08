@@ -5,7 +5,6 @@ UIControl_FontSize_bak = get(0, 'DefaultUIControlFontSize');
 set(0, 'DefaultUIControlFontSize', 18);
 choice = menu(msg,opts);
 set(0, 'DefaultUIControlFontSize', UIControl_FontSize_bak);
-choice
 
 if choice == 1
     ConnectFour_Final()
