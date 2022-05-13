@@ -144,7 +144,7 @@ while (turn ~= 0) && (horizontalCheck == 0) && ...
                 verticalCheck = 3;
                 if game(iii, jjj) == 1
                     player_one_winner_announcement = title('Player One Wins');
-                    set(player_one_winner_announcement, 'color', 'm')
+                    set(player_one_winner_announcement, 'color', 'r')
                     set(player_one_winner_announcement,'FontWeight','bold')
                     set(player_one_winner_announcement,'FontSize',19)
                 elseif game(iii, jjj) == 2
@@ -177,12 +177,12 @@ while (turn ~= 0) && (horizontalCheck == 0) && ...
                 diagonalCheckLR = 3;
                 if game(tt, hh) == 1
                     player_one_winner_announcement = title('Player One Wins');
-                    set(player_one_winner_announcement, 'color', 'm')
+                    set(player_one_winner_announcement, 'color', 'r')
                     set(player_one_winner_announcement,'FontWeight','bold')
                     set(player_one_winner_announcement,'FontSize',19)
                 elseif game(tt,hh) == 2
                     player_two_winner_announcement = title('Player Two Wins');
-                    set(player_two_winner_announcement, 'color', 'm')
+                    set(player_two_winner_announcement, 'color', 'y')
                     set(player_two_winner_announcement,'FontWeight','bold')
                     set(player_two_winner_announcement,'FontSize',19)
                 end
@@ -210,7 +210,7 @@ while (turn ~= 0) && (horizontalCheck == 0) && ...
                 diagonalCheckLR = 3;
                 if game(ttt, hhh) == 1
                     player_one_winner_announcement = title('Player One Wins');
-                    set(player_one_winner_announcement, 'color', 'm')
+                    set(player_one_winner_announcement, 'color', 'r')
                     set(player_one_winner_announcement,'FontWeight','bold')
                     set(player_one_winner_announcement,'FontSize',19)
                 elseif game(ttt, hhh) == 2
