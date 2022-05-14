@@ -9,7 +9,6 @@ figure('Name','Tic Tac Toe Game');
     set(gca,'yTick',0:3)
     set(gca,'xTickLabel','')
     set(gca,'yTickLabel','')
-    %xlabel('Player: X')
     grid on
     set(gcf, 'color', [0.4940 0.1840 0.5560])
 
@@ -22,6 +21,7 @@ outcome = -1; %decides if there is a winner
 %variables
 player = 1; %keeps track of who's turn it is
 
+%instructions listed on top of the board telling players how to participate
 instructions = title('select your marker placement by clicking square of your choice');
     set(instructions, 'color', 'w')
     set(instructions,'FontWeight','bold')
@@ -82,7 +82,7 @@ function [column, row] = mousePos(x, y)
     end
 end
 
-%function draws the X marker on the board
+%function draws the X marker on the board (X-chip)
 function create_X(col, row)
     hold on
     x = 0:1;
@@ -93,7 +93,7 @@ function create_X(col, row)
     hold off
 end
 
-%Function draws the 0 marker on the board
+%Function draws the 0 marker on the board (0-chip)
 function create_0(col, row)
     hold on
     i = 0:0.1:2*pi;
@@ -132,3 +132,5 @@ function won = won(state)
         won = -1;
     end
 end
+
+%driver: Sophie debuggers: Ashley and Jess

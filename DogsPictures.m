@@ -12,4 +12,4 @@ imshow(I)
 %and add a little more fun to the final product, so I added this image of
 %dogs to the menu options. 
 
-%driver: Ashley
+%driver: Ashley debuggers: Sophie and Ashley
