@@ -1,4 +1,3 @@
-function choice = homepage(msg) 
 msg = "Welcome! Please Select The Game You Would Like To Play.";
 opts = ["Connect Four" "Tic-Tac-Toe" "No game! I just want to look at a picture of dogs! :)"];
 
@@ -19,8 +18,7 @@ elseif choice == 3
 
 
 end
-end
-
+ 
 % we then used an if statement that works in tandem with the menu function.
 % We identified each of the three options as choices 1, 2, and 3. We then
 % incorporated this knowledge into the if statement to direct the menu
