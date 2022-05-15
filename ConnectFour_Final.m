@@ -126,6 +126,7 @@ msg = "Welcome! Please Select The Game You Would Like To Play.";
             end
         end
         if horizontalCheck == 3
+            homepage(msg)
             break
             
         end

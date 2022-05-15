@@ -17,7 +17,6 @@ elseif choice == 2
 elseif choice == 3
     DogsPictures()
 
-
 end
 end
 
