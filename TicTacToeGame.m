@@ -96,7 +96,7 @@ end
 %Function draws the 0 marker on the board (0-chip)
 function create_0(col, row)
     hold on
-    i = 0:0.1:2*pi;
+    i = 0:0.1:2.1*pi;
     x = cos(i)/2+0.5;
     y = sin(i)/2+0.5;
     plot(x+col, y+row, 'b', 'LineWidth',8)
