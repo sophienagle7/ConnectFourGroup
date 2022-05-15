@@ -1,5 +1,7 @@
 function [] = TicTacToeGame()
 %sets up the tictactoe board and players/winner
+msg = "Welcome! Please Select The Game You Would Like To Play.";
+
 figure('Name','Tic Tac Toe Game');
     close all
     figure('Name','Tic Tac Toe');
@@ -40,16 +42,18 @@ while outcome == -1
         outcome = won(state);
     end
 end
-
 if outcome == 0 
     title('PLayer One Wins!', 'FontSize', 20)
     xlabel('')
+    homepage(msg)
 elseif outcome == 1
     title('Player Two Wins!', 'FontSize', 20)
     xlabel('')
+    homepage(msg)
 else
     title('Tie', 'FontSize', 20)
     xlabel('')
+    homepage(msg)
 end
 end
 

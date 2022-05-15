@@ -102,6 +102,7 @@ while (turn ~= 0) && (horizontalCheck == 0) && ...
 %drivers and debuggers: ashley, sophie, and jess
 
 %% Look for win by rows for Players One and Two
+msg = "Welcome! Please Select The Game You Would Like To Play.";
     for ii = 1:6
         for jj = 1:4
             minihorizontalcheck = DetermineWinner(game(ii, jj), ...
@@ -113,11 +114,13 @@ while (turn ~= 0) && (horizontalCheck == 0) && ...
                     set(player_one_winner_announcement, 'color', 'r')
                     set(player_one_winner_announcement,'FontWeight','bold')
                     set(player_one_winner_announcement,'FontSize',22)
+                    homepage(msg)
                 elseif game(ii, jj) == 2
                     player_two_winner_announcement = title('Player Two Wins');
                     set(player_two_winner_announcement, 'color', 'y')
                     set(player_two_winner_announcement,'FontWeight','bold')
                     set(player_two_winner_announcement,'FontSize',22)
+                    homepage(msg)
                 end
                 break
             end
@@ -157,6 +160,7 @@ while (turn ~= 0) && (horizontalCheck == 0) && ...
             end
         end
         if verticalCheck == 3
+            homepage(msg)
             break
         end
     end
