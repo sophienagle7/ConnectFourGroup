@@ -11,10 +11,12 @@ ConnectFour:
 The turns alternate until the board is full or there is a winner. A player becomes a winner if they place four chips in a row, either horizontally, vertically, or diagonally from left to right or right to left.
 - Player one is red, and their chip is a red colored circle.
 - Player two is yellow, and their chip is a yellow colored circle.
+- Once the game is over the homepage will reappear and you can select to play again, play the other game, or look at pictures of dogs 
 TicTacToe:
 The turns alternate until the board is full or there is a winner. A player becomes a winner if they place three chips in a row, either horizontally, vertically, or diagonally from left to to right or right to left.
 - Player one is red, and their chip is a red colored X
 - Player two is blue, and their chip is a blue colored O
+- Once the game is over the homepage will reappear and you can select to play again, play the other game, or look at pictures of dogs 
 DogPictures:
 - enjoy! :)
 
