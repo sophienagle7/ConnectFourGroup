@@ -48,14 +48,6 @@ If no player wins and the board is full the game will not permit any
 more turns and will stop. For tic-tac-toe, when there is no winner 
 and the board is full the computer will display "Tie". 
 
-Below are two screen recording demonstrations of how to play the game. 
-Demonstration One shows a player selecting Connect-Four and Player One 
-having a horizontal win.
-
-Demonstration One:
-Demonstration Two shows a player selecting Tic-Tac-Toe and 
-Player Two having a diagonal win. 
-Demonstration Two:
 
 Originally, we attempted to import a customized photo of a 
 homepage menu into MATLAB and use ginput to identify
