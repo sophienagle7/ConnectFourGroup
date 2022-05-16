@@ -48,14 +48,17 @@ If no player wins and the board is full the game will not permit any
 more turns and will stop. For tic-tac-toe, when there is no winner 
 and the board is full the computer will display "Tie". 
 
+After the game ends, the homescreen comes back up and the player can select
+a new option.
+
 
 Originally, we attempted to import a customized photo of a 
 homepage menu into MATLAB and use ginput to identify
 the appropriate coordinates and discover a click function that would 
 allow us to switch from script to script
-appropriately. However, this plan did not work and after a lot of 
+appropriately. However, this plan did not work, and after a lot of 
 research we found a MATLAB menu function that
-allowed us to use clicks and switch scripts effectively. Howecer, 
+allowed us to use clicks and switch scripts effectively. However, 
 this fucntion was not customizable. Therefore,  
 we added the DogPhoto option to the menu to add some fun and 
 creativity to the project and to display photo
